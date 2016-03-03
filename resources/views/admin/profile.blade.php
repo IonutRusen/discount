@@ -159,14 +159,14 @@
                     {!!  Form::text('photoCover',null,array(
                     'id'=>'photoCover',
                     'class'=>'form-control'
-                    )) !!}<small class="text-danger">Recomended 360px x 100px</small>
+                    )) !!}
 
 
 
-                    <span class="text-danger">{!! $errors->getBag('default')->first('logo') !!}</span>
+                    <span class="text-danger" id="alerta">{!! $errors->getBag('default')->first('logo') !!}</span>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                    <a class="btn" onclick="$('input[id=logo]').click();">Browse</a>
+                    <a class="btn" id="browse" onclick="$('input[id=logo]').click();">Browse</a>
                 </div>
                 <div class="form-group">
                     <div class="col-md-6 col-sm-6 col-xs-12 col-sm-offset-3 col-md-offset-3 text-center">
@@ -177,8 +177,18 @@
                 </div>
                     {!! FORM::close() !!}
                 <script type="text/javascript">
+                    $('#browse').click(function() {
+                        $('#alerta').empty();
+                    });
                     $('input[id=logo]').change(function() {
+
+
                         $('#photoCover').val($(this).val());
+                        if(this.files[0].size/ 1024 > 1024){
+                            $("#alerta").append("<b>File size must be under 1024kb</b>");
+                            $('#logo').val('');
+                            $('#photoCover').val('');
+                        }
                     });
                 </script>
             </div>

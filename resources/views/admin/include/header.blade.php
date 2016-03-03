@@ -200,7 +200,7 @@
                                 <li><a href="/admin/profile">  Profile</a>
                                 </li>
                                 <li>
-                                    <a href="javascript:;">
+                                    <a href="admin/subscriptions">
                                         <span class="badge bg-red pull-right">50%</span>
                                         <span>Settings</span>
                                     </a>

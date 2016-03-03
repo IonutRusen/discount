@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Profile;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class UserController extends Controller
 {
     public function getDashboard()
     {
-        return view('admin.dashboard');
+
+        return view('admin.dashboard', ['logo' => Profile::whereUser_id(\Auth::user()->id)->first()->company_logo]);
     }
     public function postSignUp(Request $request){
 

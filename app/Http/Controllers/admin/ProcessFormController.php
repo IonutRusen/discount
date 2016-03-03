@@ -65,11 +65,12 @@ class ProcessFormController extends Controller
     }
     public function logo(Request $request){
         $this->validate($request, [
-            'logo' => 'mimes:jpeg,jpg,png',
+            'logo' => 'required|image|image_size:<=400,0-150|max:200px',
 
 
 
         ]);
+
 
         if (Input::hasFile('logo')) {
 
