@@ -16,4 +16,7 @@ class LinkController extends Controller
     public function getSubscription(){
         return view('admin.subscriptions', ['logo' => Profile::whereUser_id(\Auth::user()->id)->first()->company_logo]);
         }
+    public function addNew(){
+        return view('admin.addnew', ['logo' => Profile::whereUser_id(\Auth::user()->id)->first()->company_logo]);
+    }
 }

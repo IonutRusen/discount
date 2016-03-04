@@ -64,7 +64,12 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('admin/subscriptions', [
         'uses' => 'admin\LinkController@getSubscription',
-        'as' => 'dashboard',
+        'as' => 'subscriptions',
+        'middleware' => 'auth'
+    ]);
+    Route::get('admin/addnew', [
+        'uses' => 'admin\LinkController@addNew',
+        'as' => 'addnew',
         'middleware' => 'auth'
     ]);
 

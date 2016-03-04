@@ -8,22 +8,8 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel" style="height:600px;">
                 <div class="x_title">
-                    <h2>Pricing Tables Design</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Settings 1</a>
-                                </li>
-                                <li><a href="#">Settings 2</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                    </ul>
+                    <h2>Plans</h2>
+                    
                     <div class="clearfix"></div>
                 </div>
 
@@ -35,7 +21,7 @@
                             <!-- price element -->
                             <div class="col-md-3 col-sm-6 col-xs-12">
                                 <div class="pricing">
-                                    <div class="title">
+                                    <div class="titleA">
                                         <h2>A</h2>
                                         <h1>free</h1>
                                     </div>
@@ -43,21 +29,56 @@
                                         <div class="">
                                             <div class="pricing_features">
                                                 <ul class="list-unstyled text-left">
-                                                    <li><i class="fa fa-check text-success"></i> 1 coupon/voucher <strong> per day</strong></li>
+                                                    <li><i class="fa fa-check text-success"></i> 30 coupons/vouchers <strong> per Month</strong></li>
+                                                    <li><i class="fa fa-check text-success"></i>  1 coupons/vouchers <strong> per Day</strong></li>
+                                                    <li><i class="fa fa-times text-danger"></i> Complex Voucher <i class="fa fa-info-circle text-info" data-toggle="tooltip" data-placement="top" title="Increase discount value for each step. See FAQ for more info"></i></li>
+                                                    <li><i class="fa fa-check text-success"></i>  1 Location <i class="fa fa-info-circle text-info" data-toggle="tooltip" data-placement="top" title="Non editable. Coupons are delivered to users that lived in same country as yours"></i></li>
                                                     <li><i class="fa fa-times text-danger"></i>  Filter by Location</li>
                                                     <li><i class="fa fa-times text-danger"></i>  Filter by Gender</li>
-                                                    <li><i class="fa fa-times text-danger"></i>  Customisable Voucher </li>
-                                                    <li><i class="fa fa-times text-danger"></i>  View winners</li>
-                                                    <li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> access to all files</li>
-                                                    <li><i class="fa fa-check text-success"></i> <strong>Allowed</strong> to be exclusing per sale</li>
+                                                    <li><i class="fa fa-times text-danger"></i>  Filter by Age Range</li>
+                                                    <li><i class="fa fa-times text-danger"></i> View Winners</li>
+                                                    <li><i class="fa fa-times text-danger"></i>  Customisable vouchers</li>
+
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="pricing_footer">
-                                            <a href="javascript:void(0);" class="btn btn-success btn-block" role="button">Download <span> now!</span></a>
-                                            <p>
-                                                <a href="javascript:void(0);">Sign up</a>
-                                            </p>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- price element -->
+
+                            <!-- price element -->
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="pricing ">
+
+                                    <div class="titleB">
+                                        <h2>B</h2>
+                                        <h1>45 &euro;</h1>
+                                        <span>Monthly</span>
+                                    </div>
+                                    <div class="x_content">
+                                        <div class="">
+                                            <div class="pricing_features">
+                                                <ul class="list-unstyled text-left">
+                                                    <li><i class="fa fa-check text-success"></i> 300 coupons/vouchers <strong> per Month</strong></li>
+                                                    <li><i class="fa fa-check text-success"></i> 10 coupons/vouchers <strong> per Day</strong></li>
+                                                    <li><i class="fa fa-check text-success"></i> 5 Complex Voucher <i class="fa fa-info-circle text-info" data-toggle="tooltip" data-placement="top" title="Increase discount value for each step. See FAQ for more info"></i></li>
+                                                    <li><i class="fa fa-check text-success"></i>  3 Locations <i class="fa fa-info-circle text-info" data-toggle="tooltip" data-placement="top" title="Set-up the geographic area where the coupons can be won"></i></li>
+                                                    <li><i class="fa fa-check text-success"></i>  Filter by Location</li>
+                                                    <li><i class="fa fa-times text-danger"></i>  Filter by Gender</li>
+                                                    <li><i class="fa fa-times text-danger"></i>  Filter by Age Range</li>
+                                                    <li><i class="fa fa-times text-danger"></i> View Winners</li>
+                                                    <li><i class="fa fa-check text-success"></i>  Customisable vouchers</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="pricing_footer">
+                                            <a href="javascript:void(0);" class="btn btn-inverse btn-block" role="button">Buy <span> now!</span></a>
+
                                         </div>
                                     </div>
                                 </div>
@@ -72,63 +93,30 @@
                                             Best Deal
                                         </div>
                                     </div>
-                                    <div class="title">
-                                        <h2>B</h2>
-                                        <h1>$25</h1>
-                                        <span>Monthly</span>
-                                    </div>
-                                    <div class="x_content">
-                                        <div class="">
-                                            <div class="pricing_features">
-                                                <ul class="list-unstyled text-left">
-                                                    <li><i class="fa fa-check text-success"></i> 30 Coupons/Vouchers</strong></li>
-                                                    <li><i class="fa fa-check text-success"></i> Filter by Location</li>
-                                                    <li><i class="fa fa-times text-danger"></i> No filter by Gender</strong></li>
-                                                    <li><i class="fa fa-check text-success"></i> <strong>Cash on Delivery</strong></li>
-                                                    <li><i class="fa fa-check text-success"></i> All time <strong> updates</strong></li>
-                                                    <li><i class="fa fa-times text-danger"></i> <strong>Unlimited</strong> access to all files</li>
-                                                    <li><i class="fa fa-times text-danger"></i> <strong>Allowed</strong> to be exclusing per sale</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="pricing_footer">
-                                            <a href="javascript:void(0);" class="btn btn-primary btn-block" role="button">Download <span> now!</span></a>
-                                            <p>
-                                                <a href="javascript:void(0);">Sign up</a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- price element -->
-
-                            <!-- price element -->
-                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                <div class="pricing">
-                                    <div class="title">
+                                    <div class="titleC">
                                         <h2>C</h2>
-                                        <h1>$25</h1>
+                                        <h1>80 &euro;</h1>
                                         <span>Monthly</span>
                                     </div>
                                     <div class="x_content">
                                         <div class="">
                                             <div class="pricing_features">
                                                 <ul class="list-unstyled text-left">
-                                                    <li><i class="fa fa-check text-success"></i> 2 years access <strong> to all storage locations</strong></li>
-                                                    <li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> storage</li>
-                                                    <li><i class="fa fa-check text-success"></i> Limited <strong> download quota</strong></li>
-                                                    <li><i class="fa fa-check text-success"></i> <strong>Cash on Delivery</strong></li>
-                                                    <li><i class="fa fa-check text-success"></i> All time <strong> updates</strong></li>
-                                                    <li><i class="fa fa-times text-danger"></i> <strong>Unlimited</strong> access to all files</li>
-                                                    <li><i class="fa fa-times text-danger"></i> <strong>Allowed</strong> to be exclusing per sale</li>
+                                                    <li><i class="fa fa-check text-success"></i> 600 coupons/vouchers <strong>per Month</strong></li>
+                                                    <li><i class="fa fa-check text-success"></i> 20 coupons/vouchers <strong>per Day</strong></li>
+                                                    <li><i class="fa fa-check text-success"></i> 10 Complex Voucher <i class="fa fa-info-circle text-info" data-toggle="tooltip" data-placement="top" title="Increase discount value for each step. See FAQ for more info"></i></li>
+                                                    <li><i class="fa fa-check text-success"></i>  10 Locations <i class="fa fa-info-circle text-info" data-toggle="tooltip" data-placement="top" title="Set-up the geographic area where the coupons can be won"></i></li>
+                                                    <li><i class="fa fa-check text-success"></i>  Filter by Location</li>
+                                                    <li><i class="fa fa-check text-success"></i>  Filter by Gender</li>
+                                                    <li><i class="fa fa-times text-danger"></i>  Filter by Age Range</li>
+                                                    <li><i class="fa fa-check text-success"></i> View Winners</li>
+                                                    <li><i class="fa fa-check text-success"></i>  Customisable vouchers</li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="pricing_footer">
-                                            <a href="javascript:void(0);" class="btn btn-success btn-block" role="button">Download <span> now!</span></a>
-                                            <p>
-                                                <a href="javascript:void(0);">Sign up</a>
-                                            </p>
+                                            <a href="javascript:void(0);" class="btn btn-inverse btn-block" role="button">Buy <span> now!</span></a>
+
                                         </div>
                                     </div>
                                 </div>
@@ -138,30 +126,30 @@
                             <!-- price element -->
                             <div class="col-md-3 col-sm-6 col-xs-12">
                                 <div class="pricing">
-                                    <div class="title">
+                                    <div class="titleD">
                                         <h2>D</h2>
-                                        <h1>$25</h1>
+                                        <h1>150 &euro;</h1>
                                         <span>Monthly</span>
                                     </div>
                                     <div class="x_content">
                                         <div class="">
                                             <div class="pricing_features">
                                                 <ul class="list-unstyled text-left">
-                                                    <li><i class="fa fa-check text-success"></i> 2 years access <strong> to all storage locations</strong></li>
-                                                    <li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> storage</li>
-                                                    <li><i class="fa fa-check text-success"></i> Limited <strong> download quota</strong></li>
-                                                    <li><i class="fa fa-check text-success"></i> <strong>Cash on Delivery</strong></li>
-                                                    <li><i class="fa fa-check text-success"></i> All time <strong> updates</strong></li>
-                                                    <li><i class="fa fa-check text-success"></i> <strong>Unlimited</strong> access to all files</li>
-                                                    <li><i class="fa fa-check text-success"></i> <strong>Allowed</strong> to be exclusing per sale</li>
+                                                    <li><i class="fa fa-check text-success"></i> 10000 coupons/vouchers <strong> per Month</strong></li>
+                                                    <li><i class="fa fa-check text-success"></i> 333 coupons/vouchers <strong> per Day</strong></li>
+                                                    <li><i class="fa fa-check text-success" ></i> 30 Complex Voucher <i class="fa fa-info-circle text-info" data-toggle="tooltip" data-placement="top" title="Increase discount value for each step. See FAQ for more info"></i> </li>
+                                                    <li><i class="fa fa-check text-success"></i>  50 Locations <i class="fa fa-info-circle text-info" data-toggle="tooltip" data-placement="top" title="Set-up the geographic area where the coupons can be won"></i></li>
+                                                    <li><i class="fa fa-check text-success"></i>  Filter by Location</li>
+                                                    <li><i class="fa fa-check text-success"></i>  Filter by Gender</li>
+                                                    <li><i class="fa fa-check text-success"></i>  Filter by Age Range</li>
+                                                    <li><i class="fa fa-check text-success"></i>  View Winners</li>
+                                                    <li><i class="fa fa-check text-success"></i>  Customisable vouchers</li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="pricing_footer">
-                                            <a href="javascript:void(0);" class="btn btn-success btn-block" role="button">Download <span> now!</span></a>
-                                            <p>
-                                                <a href="javascript:void(0);">Sign up</a>
-                                            </p>
+                                            <a href="javascript:void(0);" class="btn btn-inverse btn-block" role="button">Buy <span> now!</span></a>
+
                                         </div>
                                     </div>
                                 </div>

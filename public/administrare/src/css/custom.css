@@ -1107,7 +1107,7 @@ h2 {
     width: 100%;
     float: left;
     clear: both;
-    margin-top: 5px;
+    margin-top: 15px;
 }
 
 .x_content h4 {
@@ -4545,14 +4545,34 @@ ul.project_files li a i {
     background: #fff;
 }
 
-.pricing .title {
-    background: #1ABB9C;
+.pricing .titleA {
+    background: #7e7e7e;
     height: 110px;
     color: #fff;
     padding: 15px 0 0;
     text-align: center;
 }
-
+.pricing .titleB {
+    background: #589088;
+    height: 110px;
+    color: #fff;
+    padding: 15px 0 0;
+    text-align: center;
+}
+.pricing .titleC {
+    background: #2f72ac;
+    height: 110px;
+    color: #fff;
+    padding: 15px 0 0;
+    text-align: center;
+}
+.pricing .titleD {
+    background: #d36326;
+    height: 110px;
+    color: #fff;
+    padding: 15px 0 0;
+    text-align: center;
+}
 .pricing .title h2 {
     text-transform: capitalize;
     font-size: 18px;
@@ -4566,16 +4586,59 @@ ul.project_files li a i {
     margin: 12px;
 }
 
-.pricing .title span {
-    background: rgba(51, 51, 51, 0.28);
+.pricing .titleB span, .pricing .titleC span, .pricing .titleD span {
+    background: rgba(0, 0, 0, 0.52);
     padding: 2px 5px;
 }
+.btn-inverse {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #363636;
+    *background-color: #222222;
+    background-image: -moz-linear-gradient(top, #444444, #222222);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
+    background-image: -webkit-linear-gradient(top, #444444, #222222);
+    background-image: -o-linear-gradient(top, #444444, #222222);
+    background-image: linear-gradient(to bottom, #444444, #222222);
+    background-repeat: repeat-x;
+    border-color: #222222 #222222 #000000;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15), 0 1px 1px rgba(0, 0, 0, .075);
+}
 
+.btn-inverse:hover,
+.btn-inverse:focus,
+.btn-inverse:active,
+.btn-inverse.active,
+.btn-inverse.disabled,
+.btn-inverse[disabled] {
+    color: #ffffff;
+    background-color: #222222;
+    *background-color: #151515;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+.btn-inverse:active,
+.btn-inverse.active {
+    background-color: #080808 \9;
+}
+
+.btn-inverse.active {
+    color: rgba(255, 255, 255, 0.75);
+}
 .pricing_features {
     background: #FAFAFA;
     padding: 20px 15px;
     min-height: 230px;
     font-size: 13.5px;
+}
+.nolineheight {
+    line-height: 0px!important;
 }
 
 .pricing_features ul li {
