@@ -111,9 +111,7 @@
                             )) !!}
                             <div class="col-md-9 col-sm-9 col-xs-12">
 
-                                {!! Form::select('category', array(
-
-                                'L' => 'Large', 'S' => 'Small'), 'S',
+                                {!! Form::select('category',$category, null,
                                 array(
                                     'class' => 'select2_single form-control',
 
@@ -129,15 +127,13 @@
                         )) !!}
                         <div class="col-md-9 col-sm-9 col-xs-12">
 
-                            {!! Form::select('country', array(
-
-                            '' => 'Please Select', 'RO' => 'Romania'), null,
-                            array(
-                                'class' => 'select2_single form-control',
+                            {!! Form::select('category',$country, null,
+                                array(
+                                    'class' => 'select2_single form-control',
 
 
-                            ))
-                            !!}
+                                ))
+                                !!}
                         </div>
                     </div>
                     <div class="form-group">

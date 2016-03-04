@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Category;
+use App\Country;
 use App\Profile;
 use Illuminate\Http\Request;
 
@@ -17,6 +19,9 @@ class LinkController extends Controller
         return view('admin.subscriptions', ['logo' => Profile::whereUser_id(\Auth::user()->id)->first()->company_logo]);
         }
     public function addNew(){
-        return view('admin.addnew', ['logo' => Profile::whereUser_id(\Auth::user()->id)->first()->company_logo]);
+        $category = Category::lists('name', 'id');
+        $country =  Country::lists('name', 'id');
+
+        return view('admin.addnew', ['logo' => Profile::whereUser_id(\Auth::user()->id)->first()->company_logo],compact('category'),compact('country'));
     }
 }
