@@ -70,26 +70,38 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'subscriptions',
         'middleware' => 'auth'
     ]);
+    Route::get('admin/invoice/{type}', [
+        'uses' => 'admin\LinkController@getInvoice',
+        'as' => 'subscriptions',
+        'middleware' => 'auth',
+
+
+    ]);
+
     Route::get('admin/addnew', [
         'uses' => 'admin\LinkController@addNew',
         'as' => 'addnew',
         'middleware' => 'auth'
     ]);
 
-    Route::get('admin/ajax/state', function (Request $request) {
-        // pass back some data
-        $data = $request['id'];
-        $result = State::where('country_id', $data)->get(array('id', 'name'));
-        // return a JSON response
-        return  Response::json($result);
-    });
+    Route::get('admin/ajax/state',[
+        'uses' => 'admin\AjaxController@getState',
+        'as' => 'getstate',
+        'middleware' => 'auth'
+    ] );
 
-    Route::get('admin/ajax/city', function (Request $request) {
-        // pass back some data
-        $data = $request['id'];
-        $result = City::where('state_id', $data)->get(array('id', 'name'));
-        // return a JSON response
-        return  Response::json($result);
-    });
+
+    Route::get('admin/ajax/state',[
+        'uses' => 'admin\AjaxController@getState',
+        'as' => 'getstate',
+        'middleware' => 'auth'
+    ] );
+
+    Route::get('admin/ajax/city', [
+        'uses' => 'admin\AjaxController@getCity',
+        'as' => 'getcity',
+        'middleware' => 'auth'
+    ]);
+
 
 });

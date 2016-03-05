@@ -77,7 +77,7 @@
                                             </div>
                                         </div>
                                         <div class="pricing_footer">
-                                            <a href="javascript:void(0);" class="btn btn-inverse btn-block" role="button">Buy <span> now!</span></a>
+                                            <a href="invoice/2" class="btn btn-inverse btn-block" role="button">Order now</a>
 
                                         </div>
                                     </div>
@@ -115,7 +115,7 @@
                                             </div>
                                         </div>
                                         <div class="pricing_footer">
-                                            <a href="javascript:void(0);" class="btn btn-inverse btn-block" role="button">Buy <span> now!</span></a>
+                                            <a href="invoice/3" class="btn btn-inverse btn-block" role="button">Order now</a>
 
                                         </div>
                                     </div>
@@ -148,7 +148,7 @@
                                             </div>
                                         </div>
                                         <div class="pricing_footer">
-                                            <a href="javascript:void(0);" class="btn btn-inverse btn-block" role="button">Buy <span> now!</span></a>
+                                            <a href="invoice/4" class="btn btn-inverse btn-block" role="button">Order now</a>
 
                                         </div>
                                     </div>

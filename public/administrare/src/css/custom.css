@@ -6406,3 +6406,15 @@ ul.notifications {
     float: right;
     opacity: 1;
 }
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #invoice * {
+        visibility: visible;
+
+    }
+
+
+}

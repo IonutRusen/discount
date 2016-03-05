@@ -22,6 +22,7 @@
 
 
 
+
     {!! HTML::script('administrare/src/js/jquery.min.js') !!}
 
 
@@ -65,16 +66,16 @@
                             </li>
                             <li><a><i class="fa fa-edit"></i> Company <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
-                                    <li><a href="profile">Profile</a>
+                                    <li><a href="/admin/profile">Profile</a>
                                     </li>
-                                    <li><a href="subscriptions">Subscriptions</a>
+                                    <li><a href="/admin/subscriptions">Subscriptions</a>
                                     </li>
 
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-tag"></i>Vouchers<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
-                                    <li><a href="addnew">Add New Voucher</a>
+                                    <li><a href="/admin/addnew">Add New Voucher</a>
                                     </li>
                                     <li><a href="#">Edit Vouchers</a>
                                     </li>
