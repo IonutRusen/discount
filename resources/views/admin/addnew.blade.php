@@ -7,7 +7,7 @@
         <div class="col-md-6 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Edit Profile</h2>
+                    <h2>Add Coupon(s)</h2>
 
                     <div class="clearfix"></div>
                 </div>
@@ -32,6 +32,8 @@
                                 )) !!}
 
                             </div>
+                            <span class="help-block">*Set a value only if you want to generate more
+coupons with the same code.</span>
                         </div>
                         <div class="form-group">
                             {!! FORM::label('noofsteps','No of steps',array(
@@ -46,6 +48,7 @@
                                 )) !!}
 
                             </div>
+                            <span class="help-block">*How many steps for your complex voucher</span>
                         </div>
                         <div class="form-group">
                             {!! FORM::label('valuestep','Value Step',array(
@@ -98,7 +101,8 @@
                                 <div class="col-md-3 col-sm-3 col-xs-12"></div>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
 
-                                <br/><span class="btn-primary btn-sm " onclick="generate()">Genereaza</span>
+                                <br/><span class="btn-primary btn-sm " onclick="generate()">Generate</span>
+                                    <span class="help-block">If you don't have your own voucher code, we can generate it for you.</span>
                                 </div>
 
                             </div>
@@ -118,8 +122,15 @@
 
                                 ))
                                 !!}
+                                <span class="help-block">Category in which your voucher will be served.</span>
                             </div>
+
                         </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12"></div>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <h3>Location Filter</h3>
+                        <span class="help-block">*In which area your voucher will be served</span>
+                    </div>
                     <div class="form-group">
 
                         {!! FORM::label('country','Country',array(
@@ -127,7 +138,7 @@
                         )) !!}
                         <div class="col-md-9 col-sm-9 col-xs-12">
 
-                            {!! Form::select('category',$country, null,
+                            {!! Form::select('country',$country, null,
                                 array(
                                     'class' => 'select2_single form-control',
 
@@ -145,7 +156,7 @@
 
                             {!! Form::select('state', array(
 
-                            '' => 'Please Select', 'IS' => 'Iasi'), null,
+                            '' => 'Select State'), null,
                             array(
                                 'class' => 'select2_single form-control',
 
@@ -163,14 +174,19 @@
 
                             {!! Form::select('city', array(
 
-                            '' => 'Please Select', '1' => 'Ramnicu Sarat'), null,
+                            '' => 'Select Country and State first'), null,
                             array(
                                 'class' => 'select2_single form-control',
-
+                                'multiple' => 'multiple'
 
                             ))
                             !!}
                         </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12"></div>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <h3>Age Filter</h3>
+                        <span class="help-block">*Reach people of specific demographics by age targeting</span>
                     </div>
                     <div class="form-group">
 
@@ -180,6 +196,7 @@
                         <div class="col-md-9 col-sm-9 col-xs-12">
 
                             {!! Form::select('agefilter', array(
+
                                  '18' => '18-24',
                                  '25' => '25-34',
                                  '35' => '35-44',
@@ -193,6 +210,31 @@
                             array(
                                 'class' => 'select2_single form-control',
                                 'multiple' => 'multiple'
+
+                            ))
+                            !!}
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12"></div>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                        <h3>Gender Filter</h3>
+                        <span class="help-block">*Reach people of specific demographics by gender targeting</span>
+                    </div>
+                    <div class="form-group">
+
+                        {!! FORM::label('agefilter','Gender',array(
+                            'class' => 'control-label col-md-3 col-sm-3 col-xs-12'
+                        )) !!}
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+
+                            {!! Form::select('agefilter', array(
+                                '' => 'Please select',
+                                 'm' => 'Male',
+                                 'f' => 'Female',
+                            ), null,
+                            array(
+                                'class' => 'select2_single form-control',
+
 
                             ))
                             !!}
@@ -234,4 +276,55 @@
     function generate() {
         couponcode.value = randomString();
     }
+</script>
+{!! HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js') !!}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#country').change(function(){
+
+            $.ajax({
+                url: 'ajax/state',
+                type: "get",
+
+                data: {id: $('#country option:selected').val()},
+                success: function(data){
+
+                    var $state = $("#state");
+                    var $city = $("#city");
+                    $state.empty();
+
+                    $city.empty();
+                    $.each(data,function(idx, obj) {
+
+                        $state.append('<option value="' + obj.id +'">' + obj.name + '</option>');
+                    });
+
+                    $state.prepend("<option value='' selected='selected'>Select State</option>");
+
+                }
+            });
+
+        });
+    });
+    $(document).ready(function(){
+        $('#state').change(function(){
+
+            $.ajax({
+                url: 'ajax/city',
+                type: "get",
+
+                data: {id: $('#state option:selected').val()},
+                success: function(data){
+
+                    var $city = $("#city");
+                    $city.empty();
+                    $.each(data,function(idx, obj) {
+
+                        $city.append('<option value="' + obj.id +'">' + obj.name + '</option>');
+                    });
+
+                }
+            });
+        });
+    });
 </script>

@@ -25,6 +25,9 @@
 */
 
 
+use App\City;
+use App\State;
+use Illuminate\Http\Request;
 
 Route::group(['middleware' => ['web']], function () {
 
@@ -72,5 +75,21 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'addnew',
         'middleware' => 'auth'
     ]);
+
+    Route::get('admin/ajax/state', function (Request $request) {
+        // pass back some data
+        $data = $request['id'];
+        $result = State::where('country_id', $data)->get(array('id', 'name'));
+        // return a JSON response
+        return  Response::json($result);
+    });
+
+    Route::get('admin/ajax/city', function (Request $request) {
+        // pass back some data
+        $data = $request['id'];
+        $result = City::where('state_id', $data)->get(array('id', 'name'));
+        // return a JSON response
+        return  Response::json($result);
+    });
 
 });

@@ -20,8 +20,11 @@ class LinkController extends Controller
         }
     public function addNew(){
         $category = Category::lists('name', 'id');
-        $country =  Country::lists('name', 'id');
-
-        return view('admin.addnew', ['logo' => Profile::whereUser_id(\Auth::user()->id)->first()->company_logo],compact('category'),compact('country'));
+        $country = Country::lists('name', 'id');
+        $defaultSelection = [''=>'Please Select'];
+        $category = $defaultSelection + $category->toArray();
+        $country = $defaultSelection + $country->toArray();
+return view('admin.addnew', ['logo' => Profile::whereUser_id(\Auth::user()->id)->first()->company_logo],compact('category', 'country'));
     }
+
 }
