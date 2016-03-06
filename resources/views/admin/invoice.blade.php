@@ -56,7 +56,7 @@ use App\Profile;
                                 </div>
                                 <!-- /.col -->
                                 <div class="col-sm-4 invoice-col">
-                                    <b>Invoice DSC 00{!! App\Invoice::get()->first()->invoice_no+1 !!}</b>
+                                    <b>Invoice DSC 00{!! App\Invoice::get()->last()->invoice_no+1 !!}</b>
                                     <br>
 
                                     <?php
@@ -141,10 +141,11 @@ use App\Profile;
                                                      )) !!}--}}
                                                 </td>
                                                 <td>
-                                                    {!! FORM::radio('type','bank',false, array(
+                                                    {!! FORM::radio('type','bank',true, array(
                                                          'class' => 'radio-inline',
                                                          'id' => 'bank',
-                                                         'title' => 'Bank Payment'
+                                                         'title' => 'Bank Payment',
+
                                                      )) !!}
                                                 </td>
                                                 <td>
@@ -158,7 +159,7 @@ use App\Profile;
                                         </tbody>
                                     </table><br/>
            <p class="text-muted well well-sm no-shadow" id="info">
-                Please select payment method
+               Please send the proof of payment to <strong>sales@zmall.ro</strong>. <br/><span class='text-danger'>The subscriptions will be activated after the payment have been confirmed !
            </p>
 </div>
 <!-- /.col -->
@@ -223,7 +224,31 @@ use App\Profile;
 <div class="row no-print">
 <div class="col-xs-12">
    <button class="btn btn-default" id="printpagebutton" onclick="printpage();"><i class="fa fa-print" id="print"></i> Print</button>
-   <button id="payment" class="btn btn-success pull-right hidden"><i class="fa fa-credit-card"></i> Pay with Paypal</button>
+
+    {!! FORM::open(array(
+        'action'=> 'admin\ProcessFormController@postInvoice' ,
+        'id' => 'invoicer',
+
+    )) !!}
+    {!! FORM::hidden('type',$type) !!}
+    {!! FORM::hidden('invoice_no',App\Invoice::get()->last()->invoice_no+1) !!}
+    {!! FORM::hidden('data_emiterii',Carbon::now()) !!}
+        @if($type==2)
+            {!! FORM::hidden('total',45) !!}
+        @elseif($type==3)
+            {!! FORM::hidden('total',80) !!}
+        @elseif($type==4)
+            {!! FORM::hidden('total',150) !!}
+        @endif
+    {!! FORM::button('<i id="icon" class="fa fa-bank"></i> Bank Payment', array(
+            'type' => 'submit',
+            'class'=> 'btn btn-success pull-right',
+            'id' => 'submit'
+    )) !!}
+    {!! FORM::close() !!}
+
+    <button id="pay_paypal" class="btn btn-success pull-right hidden"><i class="fa fa-credit-card"></i> Pay with Paypal</button>
+    <button id="pay_bank" class="btn btn-success pull-right hidden"><i class="fa fa-bank"></i> Bank Payment</button>
 
 </div>
 </div>
@@ -233,6 +258,7 @@ use App\Profile;
 </div>
 </div>
 </div>
+
 @endsection
 {!! HTML::script('https://code.jquery.com/jquery-2.2.1.min.js') !!}
 <script>
@@ -251,7 +277,11 @@ use App\Profile;
 
 
                     );
-                    $("#payment").hide();
+                    $("#icon").removeClass('fa-credit-card');
+                    $("#icon").addClass('fa-bank');
+                    $("#submit").val('Bank Payment');
+                    $("#submit").html('<i class="fa fa-credit-card"></i> Bank Payment');
+                    $("#invoicer").attr('action', '/admin/saveinvoice');
                 });
 
             });
@@ -261,8 +291,13 @@ use App\Profile;
                     $("#info").html(
                             "You will be redirected to PayPal site complete the order"
                     );
-                    $("#payment").removeClass('hidden');
-                    $("#payment").show();
+                    $("#icon").removeClass('fa-bank');
+                    $("#icon").addClass('fa-credit-card');
+                    $("#submit").val('Paypal Payment');
+                    $("#submit").html('<i class="fa fa-credit-card"></i> Pay with Paypal');
+                    $("#invoicer").attr('action', '/admin/paypalPayment');
+
+
                 });
 
             });

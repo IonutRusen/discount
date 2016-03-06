@@ -25,7 +25,7 @@ class CreateProfilesTable extends Migration
             $table->string('company_logo');
             $table->string('phone');
             $table->integer('user_id')->unsigned();
-            $table->integer('subscription_id')->default('1')
+            $table->integer('subscription_id')->default('1');
 
             $table->timestamps();
         });

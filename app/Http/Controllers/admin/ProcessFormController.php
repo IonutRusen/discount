@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Invoice;
 use App\Profile;
 use App\User;
 use Illuminate\Http\Request;
@@ -80,7 +81,7 @@ class ProcessFormController extends Controller
             Input::file('logo')->move(public_path('/administrare/src/logos'), $fileName);
 
 
-            echo $user_id = \Auth::user()->id;
+           // echo $user_id = \Auth::user()->id;
 
 
             Profile::where('user_id', $user_id)->update(array(
@@ -91,4 +92,39 @@ class ProcessFormController extends Controller
              return redirect('admin/profile')->with('message','Please Select FIle');
         }
     }
+
+    public function postInvoice(Request $request){
+        $this->validate($request, [
+            'total'          => 'in:45,80,150|required',
+            'invoice_no'     => 'required',
+            'data_emiterii'  => 'required'
+        ]);
+            $user_id                = \Auth::id();
+            $invoice_no             = $request['invoice_no'];
+            $data_emiterii          = $request['data_emiterii'];
+            $total                  = $request['total'];
+            $type                  = $request['type'];
+
+            $invoice = new Invoice();
+            $invoice['user_id'] = $user_id;
+            $invoice['invoice_no'] = $invoice_no;
+            $invoice['data_emiterii'] = $data_emiterii;
+            $invoice['total'] = $total;
+
+            $invoice->save();
+
+        $profile = Profile::where('user_id', '=', $user_id)->first();
+            $profile['subscription_id'] = $type;
+
+            $profile->save();
+
+        return redirect('/admin/dashboard');
+        }
+    public function postInvoicePaypal(Request $request){
+            $user_id                = \Auth::id();
+            $invoice_no             = $request['invoice_no'];
+            $data_emiterii          = $request['data_emiterii'];
+            $total                  = $request['total'];
+        }
+
 }
