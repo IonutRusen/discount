@@ -11,12 +11,23 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 
+
 class UserController extends Controller
 {
+    public function getLogo(){
+
+
+
+    }
+
     public function getDashboard()
     {
-
-        return view('admin.dashboard', ['logo' => Profile::whereUser_id(\Auth::user()->id)->first()->company_logo]);
+        if (isset(Profile::whereUser_id(\Auth::user()->id)->first()->company_logo)){
+            $logo =  Profile::whereUser_id(\Auth::user()->id)->first()->company_logo  ;
+        }else {
+            $logo = 'logo.png';
+        }
+        return view('admin.dashboard', ['logo' => $logo]);
     }
     public function postSignUp(Request $request){
 

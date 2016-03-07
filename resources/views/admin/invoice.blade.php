@@ -230,15 +230,21 @@ use App\Profile;
         'id' => 'invoicer',
 
     )) !!}
-    {!! FORM::hidden('type',$type) !!}
-    {!! FORM::hidden('invoice_no',App\Invoice::get()->last()->invoice_no+1) !!}
-    {!! FORM::hidden('data_emiterii',Carbon::now()) !!}
+    {!! FORM::text('type',$type) !!}
+    {!! FORM::text('invoice_no',App\Invoice::get()->last()->invoice_no+1) !!}
+    {!! FORM::text('data_emiterii',Carbon::now()) !!}
         @if($type==2)
-            {!! FORM::hidden('total',45) !!}
+            {!! FORM::text('total','45.00') !!}
+            {!! FORM::text('produs','B package') !!}
+            {!! FORM::text('descriere','300 coupons/vouchers, 10 coupons/vouchers per Day,5 Complex Voucher,3 Locations,Filter by Location,Customisable vouchers') !!}
         @elseif($type==3)
-            {!! FORM::hidden('total',80) !!}
+            {!! FORM::text('total','80.00') !!}
+            {!! FORM::text('produs','C package') !!}
+            {!! FORM::text('descriere','600 coupons/vouchers,20 coupons/vouchers per Day,10 Complex Voucher,10 Locations,Filter by Location,Filter by Gender, View Winners,Customisable vouchers') !!}
         @elseif($type==4)
-            {!! FORM::hidden('total',150) !!}
+            {!! FORM::text('total','150.00') !!}
+            {!! FORM::text('produs','D package') !!}
+            {!! FORM::text('descriere','10000 coupons/vouchers, 333 coupons/vouchers per Day,30 Complex Voucher,50 Locations,Filter by Location,Filter by Gender, Filter by Age Range, View Winners, Customisable vouchers') !!}
         @endif
     {!! FORM::button('<i id="icon" class="fa fa-bank"></i> Bank Payment', array(
             'type' => 'submit',

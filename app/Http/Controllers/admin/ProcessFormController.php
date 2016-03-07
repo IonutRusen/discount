@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
+use Omnipay\Omnipay;
 
 
 class ProcessFormController extends Controller
@@ -120,11 +121,62 @@ class ProcessFormController extends Controller
 
         return redirect('/admin/dashboard');
         }
-    public function postInvoicePaypal(Request $request){
-            $user_id                = \Auth::id();
-            $invoice_no             = $request['invoice_no'];
-            $data_emiterii          = $request['data_emiterii'];
-            $total                  = $request['total'];
+    public function PostInvoicePaypal(Request $request)
+    {
+        $this->validate($request, [
+            'total'          => 'in:45.00,80.00,150.00|required',
+            'invoice_no'     => 'required',
+            'data_emiterii'  => 'required',
+            'produs'         => 'required',
+            'descriere'      => 'required',
+        ]);
+        $user_id                = \Auth::id();
+        $invoice_no             = $request['invoice_no'];
+        $data_emiterii          = $request['data_emiterii'];
+        $total                  = $request['total'];
+        $produs                  = $request['produs'];
+        $descriere                  = $request['descriere'];
+        $type                  = $request['type'];
+
+        $params = array(
+            'cancelUrl' 	=> 'http://localhost:8080/admin/cancel_order',
+            'returnUrl' 	=> 'http://localhost:8080/payment_success',
+            'name'		    => $produs,
+            'description' 	=> $descriere,
+            'amount' 	    => $total,
+            'currency' 	    => 'EUR'
+        );
+
+        \Session::put('params', $params);
+        \Session::save();
+
+        $gateway = Omnipay::create('PayPal_Express');
+        $gateway->setUsername('ionut.rusen_api1.yahoo.com');
+        $gateway->setPassword('88JTTDLRZB3NZ7M8');
+        $gateway->setSignature('AFcWxV21C7fd0v3bYYYRCpSSRl31AjeuuwEElgyIkC5ivfReYQSpnLuF');
+
+        $gateway->setTestMode(true);
+
+        $response = $gateway->purchase($params)->send();
+
+        if ($response->isSuccessful()) {
+
+            // payment was successful: update database
+            print_r($response);
+
+        } elseif ($response->isRedirect()) {
+
+            // redirect to offsite payment gateway
+            $response->redirect();
+
+        } else {
+
+            // payment failed: display message to customer
+            echo $response->getMessage();
+
         }
+    }
+
+
 
 }

@@ -150,7 +150,7 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Cviebrock\ImageValidator\ImageValidatorServiceProvider::class,
-
+        Ignited\LaravelOmnipay\LaravelOmnipayServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -206,6 +206,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'FORM'      => Collective\Html\FormFacade::class,
         'HTML'      => Collective\Html\HtmlFacade::class,
+        'Omnipay'   => Ignited\LaravelOmnipay\Facades\OmnipayFacade::class,
 
     ],
 

@@ -9,7 +9,9 @@
         "laravel/framework": "5.2.*",
         "laravelcollective/html": "~5.0",
         "barryvdh/laravel-ide-helper": "^2.1",
-        "cviebrock/image-validator": "^2.0"
+        "cviebrock/image-validator": "^2.0",
+        "ignited/laravel-omnipay": "2.*",
+        "omnipay/paypal": "~2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
