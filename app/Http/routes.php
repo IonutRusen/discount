@@ -125,5 +125,10 @@ Route::group(['middleware' => ['web']], function () {
         'middleware' => 'auth'
     ]);
 
+    Route::get('admin/pdf/{invoiceno}', [
+        'uses' => 'admin\PdfInvoice@createInvoice',
+        'as' => 'pdfInvoice',
+        'middleware' => 'auth'
+    ]);
 
 });

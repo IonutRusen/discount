@@ -5,7 +5,7 @@
 @section('content')
 <div class="row">
     <div class="x_content">
-        {!! $invoices !!}
+
         <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>
 
         <table class="table table-striped responsive-utilities jambo_table bulk_action">
@@ -37,11 +37,13 @@
                     <td class=" ">
                         @if($invoice['status'] == 1)
                             <span class="label status status-unpaid"><span class="textred">Unpaid</span></span>
-                        @else
+                        @elseif($invoice['status'] == 0)
                             <span class="label status status-paid"><span class="textgreen">Paid</span></span>
+                        @else
+                            <span class="label status status-canceled"><span class="textgreen">Cancelled</span></span>
                         @endif
                     </td>
-                    <td class=" last"><a href="#">View</a>
+                    <td class=" last">{{ HTML::linkAction('admin\PdfInvoice@createInvoice', 'View invoice', array($invoice['invoice_no'])) }}
                     </td>
                 </tr>
             @endforeach

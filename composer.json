@@ -11,7 +11,9 @@
         "barryvdh/laravel-ide-helper": "^2.1",
         "cviebrock/image-validator": "^2.0",
         "ignited/laravel-omnipay": "2.*",
-        "omnipay/paypal": "~2.0"
+        "omnipay/paypal": "~2.0",
+        "barryvdh/laravel-dompdf": "0.6.*"
+
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -19,6 +21,7 @@
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",
         "symfony/dom-crawler": "2.8.*|3.0.*"
+
     },
     "autoload": {
         "classmap": [

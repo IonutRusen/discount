@@ -151,6 +151,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Cviebrock\ImageValidator\ImageValidatorServiceProvider::class,
         Ignited\LaravelOmnipay\LaravelOmnipayServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -207,6 +208,7 @@ return [
         'FORM'      => Collective\Html\FormFacade::class,
         'HTML'      => Collective\Html\HtmlFacade::class,
         'Omnipay'   => Ignited\LaravelOmnipay\Facades\OmnipayFacade::class,
+        'PDF'       => Barryvdh\DomPDF\Facade::class,
 
     ],
 
