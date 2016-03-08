@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('title')
-    Your Profile
+    Choose Your Subscription
 @endsection
 @section('content')
     <div class="row">

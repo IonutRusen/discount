@@ -6418,3 +6418,9 @@ ul.notifications {
 
 
 }
+.status-paid{
+    background-color: #498302;
+}
+.status-unpaid{
+    background-color: #ED3E48;
+}

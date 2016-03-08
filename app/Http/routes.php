@@ -114,7 +114,16 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'saveInvoicePaypal',
         'middleware' => 'auth'
     ]);
-
+    Route::get('admin/sucessPaypal', [
+        'uses' => 'admin\ProcessFormController@successPaypal',
+        'as' => 'successPaypal',
+        'middleware' => 'auth'
+    ]);
+    Route::get('admin/invoices', [
+            'uses' => 'admin\LinkController@getInvoices',
+        'as' => 'getInvoices',
+        'middleware' => 'auth'
+    ]);
 
 
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Category;
 use App\Country;
+use App\Invoice;
 use App\Profile;
 
 
@@ -62,5 +63,17 @@ class LinkController extends Controller
 
         return view('admin.addnew', ['logo' => $logo],compact('category', 'country'));
     }
+    public function getInvoices(){
+        if (isset(Profile::whereUser_id(\Auth::user()->id)->first()->company_logo)){
+            $logo =  Profile::whereUser_id(\Auth::user()->id)->first()->company_logo  ;
+        }else {
+            $logo = 'logo.png';
+        }
+        $invoices = Invoice::where('user_id', \Auth::id())->get();
+
+
+
+        return view('admin.invoices', ['logo' => $logo])->with('invoices',$invoices);
+        }
 
 }

@@ -70,6 +70,8 @@
                                     </li>
                                     <li><a href="/admin/subscriptions">Subscriptions</a>
                                     </li>
+                                    <li><a href="/admin/invoices">My Invoices</a>
+                                    </li>
 
                                 </ul>
                             </li>

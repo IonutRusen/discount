@@ -138,13 +138,23 @@ class ProcessFormController extends Controller
         $descriere                  = $request['descriere'];
         $type                  = $request['type'];
 
+        $invoice = new Invoice();
+        $invoice['user_id'] = \Auth::id();
+        $invoice['invoice_no'] = $invoice_no;
+        $invoice['data_emiterii'] = $data_emiterii;
+        $invoice['total'] = $total;
+
+        $invoice->save();
+
         $params = array(
-            'cancelUrl' 	=> 'http://localhost:8080/admin/cancel_order',
-            'returnUrl' 	=> 'http://localhost:8080/payment_success',
+            'cancelUrl' 	=> "http://localhost:8000/admin/subscriptions",
+            'returnUrl' 	=> "http://localhost:8000/admin/sucessPaypal?invoice_no=$invoice_no",
             'name'		    => $produs,
             'description' 	=> $descriere,
             'amount' 	    => $total,
-            'currency' 	    => 'EUR'
+            'currency' 	    => 'EUR',
+            'transactionId' => $invoice_no
+
         );
 
         \Session::put('params', $params);
@@ -161,12 +171,12 @@ class ProcessFormController extends Controller
 
         if ($response->isSuccessful()) {
 
-            // payment was successful: update database
-            print_r($response);
+
+
 
         } elseif ($response->isRedirect()) {
 
-            // redirect to offsite payment gateway
+
             $response->redirect();
 
         } else {
@@ -176,6 +186,18 @@ class ProcessFormController extends Controller
 
         }
     }
+    public function successPaypal(Request $request){
+
+                if ($request){
+                    if($request['token'] && $request['PayerID'] && $request['invoice_no']){
+                       $invoice = Invoice::where('invoice_no', '=', $request['invoice_no'])->first();
+                       $invoice['status'] = 1;
+                        $invoice->save();
+                    }
+                }
+            return redirect('admin/dashboard');
+
+        }
 
 
 
