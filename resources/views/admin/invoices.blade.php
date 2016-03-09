@@ -1,3 +1,4 @@
+
 @extends('admin.master')
 @section('title')
     Your Invoices
@@ -6,7 +7,7 @@
 <div class="row">
     <div class="x_content">
 
-        <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>
+
 
         <table class="table table-striped responsive-utilities jambo_table bulk_action">
             <thead>

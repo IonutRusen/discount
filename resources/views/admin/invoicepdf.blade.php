@@ -76,14 +76,14 @@
             <td class="text-center" width="20%">
                 <h2>INVOICE</h2>
                 Number : DSC00{{ $invoice_no }}<br/>
-                Date : {{ $data_factura }}<br/><br/><br/>
+                Date : {{ $invoice_no }}<br/><br/><br/>
                 <img src="http://zmall.ro/logofact.jpg"/>
             </td>
             <td class="text-right" width="50%">
                 <strong>{{ $company_name }}</strong><br/>
-                Tax ID:{{ $tax_id }}<br/>
+                Tax ID:{{ $company_tax_id }}<br/>
                 REG #:{{ $company_reg_com }}<br/>
-                {{ $company_address }}<br/>
+               {{ $company_address }}<br/>
                 {{ $company_city }}, {{ $company_country }}<br/>
                 Phone: {{ $phone }}<br/>
                 Email: {{ $email }}<br/>
@@ -108,19 +108,19 @@
 
         <tr class="border-bottom border-right center">
             <td width="5%"><strong>#</strong></td>
-            <td width="20%"><strong>Product</strong></td>
-            <td width="45%"><strong>Description</strong></td>
+            <td width="15%"><strong>Product</strong></td>
+            <td width="40%"><strong>Description</strong></td>
             <td width="10%"><strong>Qty</strong></td>
             <td width="10%"><strong>Unit Price</strong></td>
-            <td width="10%"><strong>TOTAL</strong></td>
+            <td width="20%"><strong>TOTAL</strong></td>
         </tr>
         <tr class="border-right">
             <td class="center">1</td>
-            <td class="center">{{ $product }}</td>
-            <td class="center">{{ $description }}<br/><strong>Period :{{ $period }}</strong></td>
-            <td class="right-center">{{ $qty }}</td>
+            <td class="center">{{ $name }}</td>
+            <td class="center">{{ $description }}<br/><strong>Period :</strong></td>
+            <td class="right-center">1</td>
             <td class="right-center"> {{ $price }}&euro; </td>
-            <td class="right-center">{{ $total }}&euro;</td>
+            <td class="right-center">{{ $price }}&euro;</td>
         </tr>
         <tr class="border-right">
             <td class="center"></td>
@@ -173,10 +173,10 @@
         <tbody>
 
         <tr class="border-bottom border-right center">
-            <td width="65%"><strong>Total</strong></td>
-            <td width="10%"><strong>{{ $qty }}</strong></td>
+            <td width="60%"><strong>Total</strong></td>
+            <td width="10%"><strong>1</strong></td>
             <td width="10%"><strong>{{ $price }}&euro;</strong></td>
-            <td width="10%"><strong>{{ $total }}&euro;</strong></td>
+            <td width="20%"><strong>{{ $price }}&euro;</strong></td>
         </tr>
 
 

@@ -111,6 +111,7 @@ class ProcessFormController extends Controller
             $invoice['invoice_no'] = $invoice_no;
             $invoice['data_emiterii'] = $data_emiterii;
             $invoice['total'] = $total;
+            $invoice['product'] = $type;
 
             $invoice->save();
 

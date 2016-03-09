@@ -238,14 +238,17 @@ use App\Profile;
             {!! FORM::hidden('total','45.00') !!}
             {!! FORM::hidden('produs','B package') !!}
             {!! FORM::hidden('descriere','300 coupons/vouchers, 10 coupons/vouchers per Day,5 Complex Voucher,3 Locations,Filter by Location,Customisable vouchers') !!}
+        {{ FORM::hidden('type', $type) }}
         @elseif($type==3)
             {!! FORM::hidden('total','80.00') !!}
             {!! FORM::hidden('produs','C package') !!}
             {!! FORM::hidden('descriere','600 coupons/vouchers,20 coupons/vouchers per Day,10 Complex Voucher,10 Locations,Filter by Location,Filter by Gender, View Winners,Customisable vouchers') !!}
+            {{ FORM::hidden('type', $type) }}
         @elseif($type==4)
             {!! FORM::hidden('total','150.00') !!}
             {!! FORM::hidden('produs','D package') !!}
             {!! FORM::hidden('descriere','10000 coupons/vouchers, 333 coupons/vouchers per Day,30 Complex Voucher,50 Locations,Filter by Location,Filter by Gender, Filter by Age Range, View Winners, Customisable vouchers') !!}
+        {{ FORM::hidden('type', $type) }}
         @endif
     {!! FORM::button('<i id="icon" class="fa fa-bank"></i> Bank Payment', array(
             'type' => 'submit',

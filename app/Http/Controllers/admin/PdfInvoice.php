@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 ini_set('xdebug.max_nesting_level', 200);
+use App\Invoice;
+use App\User;
 use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as Pdf1;
@@ -13,28 +15,62 @@ class PdfInvoice extends Controller
 {
     public function createInvoice($invoice)
     {
-        $data = array(
+        $invoice = $invoice;
+      // $invoice_data = Invoice::where('user_id', \Auth::id())->where('invoice_no', $invoice)->get();
+        $data = \DB::table('users')
+            ->join('profiles', 'users.id', '=', 'profiles.user_id')
+            ->join('invoices',
+                function ($join) use ($invoice){
 
-            'company_name'=>'Dante International',
-            'tax_id' => 502554544,
-            'invoice_no' => 3,
-            'data_factura' => '16.Mar.2016',
-            'company_reg_com' => 'J40/15879/2008',
-            'company_address' => 'Rua de Napoli 5',
-            'company_city' => 'Neaples',
-            'company_country' => 'Italy',
-            'phone' => 0760616554,
-            'email' => 'office@emag.ro',
-            'product' => 'B Package',
-            'description' => '600 coupons/vouchers,20 coupons/vouchers per Day,10 Complex Voucher,10 Locations,Filter by Location,Filter by Gender, View Winners,Customisable vouchers',
-            'period' => '06.MAr.2016 - 05.Apr.2016',
-            'qty' => '1',
-            'price' => '45',
-            'total' => '45',
-        );
+                    $join->on('users.id', '=', 'invoices.user_id')
+                        ->where('invoices.invoice_no', '=', $invoice);
+                })
 
-         return $pdf = Pdf1::loadView('admin.invoicepdf', $data)->download('invoice.pdf');
-        // return view('admin.invoicepdf')->with($data);
+            ->join('packages', 'packages.id', '=', 'invoices.product')
+
+
+            ->select(
+                'users.email',
+                'profiles.company_name',
+                'profiles.company_address',
+                'profiles.company_tax_id',
+                'profiles.company_reg_com',
+                'profiles.company_city',
+                'profiles.company_country',
+                'profiles.phone',
+                'invoices.total',
+                'invoices.data_emiterii',
+                'packages.name',
+                'packages.description',
+                'packages.price',
+                'invoices.invoice_no'
+
+
+            )->get();
+
+
+
+        foreach($data as $element)
+            $invoice_data = array(
+                'email' => $element->email,
+                'company_name' => $element->company_name,
+                'company_address' => $element->company_address,
+                'company_tax_id' => $element->company_tax_id,
+                'company_reg_com' => $element->company_reg_com,
+                'company_city' => $element->company_city,
+                'company_country' => $element->company_country,
+                'phone' => $element->phone,
+                'total' => $element->total,
+                'data_emiterii' => $element->data_emiterii,
+                'name' => $element->name,
+                'description' => $element->description,
+                'price' => $element->price,
+                'invoice_no' => $element->invoice_no
+            );
+
+
+      return $pdf = Pdf1::loadView('admin.invoicepdf', $invoice_data)->download('invoice.pdf');
+        //  return view('admin.invoicepdf',$invoice_data);
 
     }
 }
