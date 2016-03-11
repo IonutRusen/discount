@@ -4,4 +4,7 @@
 
 @include('admin.include.footer')
 
-@yield('scripts')
+
+
+
+@yield('customscript')

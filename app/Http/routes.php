@@ -102,8 +102,27 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'getcity',
         'middleware' => 'auth'
     ]);
+    Route::get('admin/ajax/locatinoid', [
+        'uses' => 'admin\AjaxController@getLocationbyId',
+        'as' => 'getLocationbyId',
+        'middleware' => 'auth'
+    ]);
 
-
+    Route::post('admin/savelocation', [
+        'uses' => 'admin\ProcessFormController@saveLocation',
+        'as' => 'saveLocation',
+        'middleware' => 'auth'
+    ]);
+    Route::post('admin/editlocation', [
+        'uses' => 'admin\ProcessFormController@editLocation',
+        'as' => 'editLocation',
+        'middleware' => 'auth'
+    ]);
+    Route::get('admin/deletelocation/{id}', [
+        'uses' => 'admin\ProcessFormController@deleteLocation',
+        'as' => 'deleteLocation',
+        'middleware' => 'auth'
+    ]);
     Route::post('admin/saveinvoice', [
         'uses' => 'admin\ProcessFormController@postInvoice',
         'as' => 'saveInvoice',

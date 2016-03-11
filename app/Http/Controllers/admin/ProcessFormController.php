@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Invoice;
+use App\Location;
 use App\Profile;
 use App\User;
 use Illuminate\Http\Request;
@@ -199,7 +200,54 @@ class ProcessFormController extends Controller
             return redirect('admin/dashboard');
 
         }
+    public function saveLocation(Request $request){
+            $country = $request['country'];
+            $locationname = $request['location_name'];
+            $county = $request['state'];
+            $city = serialize(Input::get('city'));
 
+            $location = new Location();
+            $location['country'] = $country;
+            $location['name'] = $locationname;
+            if($county) {
+                $location['county'] = $county;
 
+            }
+            if($city){
+                $location['city'] = $city;
+            }
+            $location['user_id'] = \Auth::id();
+
+        $location->save();
+
+        return redirect('admin/profile');
+        }
+    public function editLocation(Request $request){
+            $locationid = $request['location_id'];
+            $country = $request['country'];
+            $locationname = $request['location_name'];
+            $county = $request['state'];
+            $city = serialize(Input::get('city'));
+
+            $location = Location::findOrFail($locationid);
+
+                $location['country'] = $country;
+                $location['name'] = $locationname;
+                if($county) {
+                    $location['county'] = $county;
+
+                }
+                if($city){
+                    $location['city'] = $city;
+                }
+                $location['user_id'] = \Auth::id();
+                $location->save();
+        return redirect()->back();
+        }
+    public function deleteLocation($id){
+            $location = Location::find($id);
+           $location->delete();
+        return redirect()->back();
+        }
 
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddProductTableToInvoice extends Migration
+class AddLocationNameToLocations extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,8 @@ class AddProductTableToInvoice extends Migration
      */
     public function up()
     {
-        Schema::table('invoices', function (Blueprint $table) {
-            $table->integer('product');
+        Schema::table('locations', function (Blueprint $table) {
+            $table->string('name');
         });
     }
 
@@ -24,8 +24,8 @@ class AddProductTableToInvoice extends Migration
      */
     public function down()
     {
-        Schema::table('invoices', function (Blueprint $table) {
-            $table->dropColumn('product');
+        Schema::table('locations', function (Blueprint $table) {
+            $table->dropColumn('name');
         });
     }
 }
