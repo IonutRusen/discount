@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Invoice;
 use App\Location;
 use App\Profile;
-use App\User;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -201,6 +201,13 @@ class ProcessFormController extends Controller
 
         }
     public function saveLocation(Request $request){
+        $this->validate($request, [
+            'country'          => 'required',
+            'location_name'     => 'required',
+            'data_emiterii'  => 'required',
+            'produs'         => 'required',
+            'descriere'      => 'required',
+        ]);
             $country = $request['country'];
             $locationname = $request['location_name'];
             $county = $request['state'];

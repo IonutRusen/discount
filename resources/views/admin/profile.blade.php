@@ -1,5 +1,4 @@
-{{ $nrLocatiiActive }}
-{{ $NrLocatii }}
+
 @extends('admin.master')
 @section('title')
     Your Profile
@@ -384,6 +383,7 @@
                         'id' => 'location_name_modal'
                    )) !!}
                     </div>
+
                 </div>
                 <div class="form-group">
 
@@ -401,6 +401,7 @@
                             ))
                             !!}
                     </div>
+
                 </div>
                 @if( $NrLocatii == 1)
                 @else

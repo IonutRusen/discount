@@ -61,7 +61,7 @@
                     <div class="menu_section">
 
                         <ul class="nav side-menu">
-                            <li><a><i class="fa fa-home"></i> Home </a>
+                            <li><a href="dashboard"><i class="fa fa-home"></i> Home </a>
 
                             </li>
                             <li><a><i class="fa fa-edit"></i> Company <span class="fa fa-chevron-down"></span></a>
