@@ -36,9 +36,9 @@
 
                     <td class="a-right a-right ">{{ $invoice['total'] }} &euro;</td>
                     <td class=" ">
-                        @if($invoice['status'] == 1)
+                        @if($invoice['status'] == 0)
                             <span class="label status status-unpaid"><span class="textred">Unpaid</span></span>
-                        @elseif($invoice['status'] == 0)
+                        @elseif($invoice['status'] == 1)
                             <span class="label status status-paid"><span class="textgreen">Paid</span></span>
                         @else
                             <span class="label status status-canceled"><span class="textgreen">Cancelled</span></span>

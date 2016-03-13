@@ -149,5 +149,10 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'pdfInvoice',
         'middleware' => 'auth'
     ]);
+    Route::post('admin/addnewSimpleVoucher', [
+        'uses' => 'admin\AddnewSimpleVoucher@addnew',
+        'as' => 'pdfInvoice',
+        'middleware' => 'auth'
+    ]);
 
 });

@@ -6,6 +6,7 @@ use App\Invoice;
 use App\Location;
 use App\Profile;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -116,8 +117,10 @@ class ProcessFormController extends Controller
 
             $invoice->save();
 
+
         $profile = Profile::where('user_id', '=', $user_id)->first();
             $profile['subscription_id'] = $type;
+            $profile['status'] = 0;
 
             $profile->save();
 
@@ -132,7 +135,7 @@ class ProcessFormController extends Controller
             'produs'         => 'required',
             'descriere'      => 'required',
         ]);
-        $user_id                = \Auth::id();
+
         $invoice_no             = $request['invoice_no'];
         $data_emiterii          = $request['data_emiterii'];
         $total                  = $request['total'];
@@ -145,9 +148,15 @@ class ProcessFormController extends Controller
         $invoice['invoice_no'] = $invoice_no;
         $invoice['data_emiterii'] = $data_emiterii;
         $invoice['total'] = $total;
+        $invoice['product'] = $type ;
 
         $invoice->save();
+        $profile = Profile::where('user_id', '=', \Auth::id())->first();
+        $profile['subscription_id'] = $type;
+        $profile['end_cicle'] = Carbon::now()->addDays(30);
+        $profile['status'] = 1;
 
+        $profile->save();
         $params = array(
             'cancelUrl' 	=> "http://localhost:8000/admin/subscriptions",
             'returnUrl' 	=> "http://localhost:8000/admin/sucessPaypal?invoice_no=$invoice_no",
@@ -194,7 +203,9 @@ class ProcessFormController extends Controller
                     if($request['token'] && $request['PayerID'] && $request['invoice_no']){
                        $invoice = Invoice::where('invoice_no', '=', $request['invoice_no'])->first();
                        $invoice['status'] = 1;
+                       $invoice['data_platii'] = Carbon::now();
                         $invoice->save();
+
                     }
                 }
             return redirect('admin/dashboard');
@@ -204,9 +215,7 @@ class ProcessFormController extends Controller
         $this->validate($request, [
             'country'          => 'required',
             'location_name'     => 'required',
-            'data_emiterii'  => 'required',
-            'produs'         => 'required',
-            'descriere'      => 'required',
+
         ]);
             $country = $request['country'];
             $locationname = $request['location_name'];
@@ -230,10 +239,10 @@ class ProcessFormController extends Controller
         return redirect('admin/profile');
         }
     public function editLocation(Request $request){
-            $locationid = $request['location_id'];
-            $country = $request['country'];
-            $locationname = $request['location_name'];
-            $county = $request['state'];
+            $locationid = $request['location_id1'];
+            $country = $request['country1'];
+            $locationname = $request['location_name1'];
+            $county = $request['state1'];
             $city = serialize(Input::get('city'));
 
             $location = Location::findOrFail($locationid);

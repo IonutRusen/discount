@@ -47,7 +47,15 @@ class UserController extends Controller
         $user->password = $password;
 
         $user->save();
+
+
         Auth::login($user);
+
+        $profile = new Profile();
+        $profile['user_id'] = Auth::id();
+        $profile['subscription_id'] = 1;
+        $profile->save();
+
         return redirect()->route('dashboard');
     }
 

@@ -76,7 +76,7 @@
             <td class="text-center" width="20%">
                 <h2>INVOICE</h2>
                 Number : DSC00{{ $invoice_no }}<br/>
-                Date : {{ $invoice_no }}<br/><br/><br/>
+                Date : {{ Carbon\Carbon::parse($data_emiterii)->format('d-M-Y')}}<br/><br/><br/>
                 <img src="http://zmall.ro/logofact.jpg"/>
             </td>
             <td class="text-right" width="50%">
@@ -117,7 +117,7 @@
         <tr class="border-right">
             <td class="center">1</td>
             <td class="center">{{ $name }}</td>
-            <td class="center">{{ $description }}<br/><strong>Period :</strong></td>
+            <td class="center">{{ $description }}<br/><strong>Period :{{ Carbon\Carbon::parse($data_emiterii)->format('d-M-Y')}} - {{ Carbon\Carbon::parse($data_emiterii)->addMonths(1)->format('d-M-Y')}}</strong></td>
             <td class="right-center">1</td>
             <td class="right-center"> {{ $price }}&euro; </td>
             <td class="right-center">{{ $price }}&euro;</td>

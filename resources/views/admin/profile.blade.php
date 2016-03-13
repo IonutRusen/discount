@@ -203,6 +203,9 @@
             <div class="col-sm-6 col-xs-12">
                 <div class="col-sm-12 col-xs-12">
                     <div class="x_panel">
+                        @if(Session::has('message'))
+                            <p class="alert alert-danger">{{ Session::get('message') }}</p>
+                        @endif
                         <div class="x_title">
                             <h2>Add Location</h2>
                             <div class="clearfix"></div>
@@ -282,6 +285,58 @@
 @section('customscript')
 
     <script type="text/javascript">
+
+        //AJAX MODAL
+        $(document).ready(function(){
+            $('#country1').change(function(){
+
+                $.ajax({
+                    url: 'ajax/state',
+                    type: "get",
+
+                    data: {id: $('#country1 option:selected').val()},
+                    success: function(data){
+
+                        var $state = $("#state1");
+                        var $city = $("#city1");
+                        $state.empty();
+
+                        $city.empty();
+                        $.each(data,function(idx, obj) {
+
+                            $state.append('<option value="' + obj.id +'">' + obj.name + '</option>');
+                        });
+
+                        $state.prepend("<option value='0' selected='selected'>All</option>");
+
+                    }
+                });
+
+            });
+        });
+        $(document).ready(function(){
+            $('#state1').change(function(){
+
+                $.ajax({
+                    url: 'ajax/city',
+                    type: "get",
+
+                    data: {id: $('#state1 option:selected').val()},
+                    success: function(data){
+
+                        var $city = $("#city1");
+                        $city.empty();
+                        $.each(data,function(idx, obj) {
+
+                            $city.append('<option value="' + obj.id +'">' + obj.name + '</option>');
+                        });
+
+                    }
+                });
+            });
+        });
+        //END AJAX MODAL
+        //AJAX NORMAL
         $(document).ready(function(){
             $('#country').change(function(){
 
@@ -330,10 +385,10 @@
                 });
             });
         });
+        //AJAX NORMAL
 
 
-    </script>
-    <script>
+
         $('#exampleModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget) // Button that triggered the modal
             // var recipient = button.data('whatever') // Extract info from data-* attributes
@@ -344,7 +399,7 @@
                 data: {id: button.data('whatever')},
                 success: function(data){
 
-                    console.log(data)
+
                     $('.modal-body #location_name_modal').val(data['0'].name);
                     $('.modal-body #location_id').val(data['0'].id);
 
@@ -373,7 +428,7 @@
                 )) !!}
 
                 <div class="form-group">
-                    {!! FORM::label('country','Location Name',array(
+                    {!! FORM::label('location_name','Location Name',array(
                         'class' => 'control-label col-md-3 col-sm-3 col-xs-12',
 
                     )) !!}
@@ -388,12 +443,12 @@
                 <div class="form-group">
 
 
-                    {!! FORM::label('country','Country',array(
+                    {!! FORM::label('country1','Country',array(
                         'class' => 'control-label col-md-3 col-sm-3 col-xs-12'
                     )) !!}
                     <div class="col-md-9 col-sm-9 col-xs-12">
 
-                        {!! Form::select('country',$country, null,
+                        {!! Form::select('country1',$country, null,
                             array(
                                 'class' => 'select2_single form-control',
 
@@ -407,12 +462,12 @@
                 @else
                     <div class="form-group">
 
-                        {!! FORM::label('state','State / County',array(
+                        {!! FORM::label('state1','State / County',array(
                             'class' => 'control-label col-md-3 col-sm-3 col-xs-12'
                         )) !!}
                         <div class="col-md-9 col-sm-9 col-xs-12">
 
-                            {!! Form::select('state', array(
+                            {!! Form::select('state1', array(
 
                             '' => 'Select State'), null,
                             array(
@@ -425,18 +480,18 @@
                     </div>
                     <div class="form-group">
 
-                        {!! FORM::label('city','City',array(
+                        {!! FORM::label('city1','City',array(
                             'class' => 'control-label col-md-3 col-sm-3 col-xs-12'
                         )) !!}
                         <div class="col-md-9 col-sm-9 col-xs-12">
 
-                            {!! Form::select('city[]', array(
+                            {!! Form::select('city1[]', array(
 
                             '' => 'Select Country and State first'), null,
                             array(
                                 'class' => 'select2_single form-control',
                                 'multiple' => 'multiple',
-                                'id' => 'city'
+                                'id' => 'city1'
 
                             ))
                             !!}
