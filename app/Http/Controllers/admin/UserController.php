@@ -54,6 +54,7 @@ class UserController extends Controller
         $profile = new Profile();
         $profile['user_id'] = Auth::id();
         $profile['subscription_id'] = 1;
+        $profile['status'] = 1;
         $profile->save();
 
         return redirect()->route('dashboard');

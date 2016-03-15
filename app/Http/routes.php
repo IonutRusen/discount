@@ -83,7 +83,11 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'addnew',
         'middleware' => 'auth'
     ]);
-
+    Route::get('admin/addnewComplex', [
+        'uses' => 'admin\LinkController@addNewComplex',
+        'as' => 'addnew',
+        'middleware' => 'auth'
+    ]);
     Route::get('admin/ajax/state',[
         'uses' => 'admin\AjaxController@getState',
         'as' => 'getstate',
@@ -149,10 +153,28 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'pdfInvoice',
         'middleware' => 'auth'
     ]);
+    //add vouchers
     Route::post('admin/addnewSimpleVoucher', [
         'uses' => 'admin\AddnewSimpleVoucher@addnew',
         'as' => 'pdfInvoice',
         'middleware' => 'auth'
     ]);
 
+    Route::post('admin/addnewComplexVoucher', [
+        'uses' => 'admin\AddnewComplexVoucher@addnew',
+        'as' => 'pdfInvoice',
+        'middleware' => 'auth'
+    ]);
+    //end add vouchers
+    Route::get('admin/allvouchers', [
+        'uses' => 'admin\LinkController@getAllVouchers',
+        'as' => 'pdfInvoice',
+        'middleware' => 'auth'
+    ]);
+
+    Route::get('admin/ajax/getAllVouchers',[
+        'uses' => 'admin\AjaxController@getallCoupons',
+        'as' => 'getallCoupons',
+        'middleware' => 'auth'
+    ] );
 });

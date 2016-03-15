@@ -6,6 +6,7 @@ namespace App\Http\Controllers\admin;
 use App\City;
 
 
+use App\Coupon;
 use App\Http\Controllers\Controller;
 use App\Location;
 use \Illuminate\Http\Request;
@@ -34,4 +35,11 @@ class AjaxController extends Controller
             $result = Location::where('id', $locationid)->get(array('name','id'));
                 return \Response::json($result);
         }
+
+    public function getallCoupons(){
+
+        $vouchers = Coupon::where('user_id',\Auth::id())->select('id','value','type','complex','couponcode','category')->get();
+
+        return \Response::json($vouchers);
+    }
 }

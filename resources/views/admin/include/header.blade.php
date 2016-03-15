@@ -77,9 +77,11 @@
                             </li>
                             <li><a><i class="fa fa-tag"></i>Vouchers<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
-                                    <li><a href="/admin/addnew">Add New Voucher</a>
+                                    <li><a href="/admin/addnew">New Voucher</a>
                                     </li>
-                                    <li><a href="#">Edit Vouchers</a>
+                                    <li><a href="/admin/addnewComplex">New Complex Voucher</a>
+                                    </li>
+                                    <li><a href="/admin/allvouchers">All Coupons</a>
                                     </li>
                                     <li><a href="#">Templates</a>
                                     </li>
