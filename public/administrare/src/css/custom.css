@@ -5796,7 +5796,7 @@ a.hiddenanchor{
 /********** sign in ***************************/
 .login_box{ padding:20px; margin: auto;}
 a{ text-decoration: none; }
-a:hover{ text-decoration: underline; }
+a:hover{ text-decoration: none; }
 .left { float:left; }
 .alignleft { float: left; margin-right: 15px; }
 .alignright { float: right; margin-left: 15px; }

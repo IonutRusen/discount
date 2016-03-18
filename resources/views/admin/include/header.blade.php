@@ -188,7 +188,7 @@
                                 <li>
                                     <a href="#">Help</a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                <li><a href="/admin/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                                 </li>
                             </ul>
                         </li>

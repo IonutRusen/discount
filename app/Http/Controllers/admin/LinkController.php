@@ -258,9 +258,19 @@ class LinkController extends Controller
                 }else {
                     $logo = 'logo.png';
                 }
-        $vouchers = Coupon::where('user_id',\Auth::id())->get();
 
-            return view('admin.allcoupons', ['logo' => $logo],compact('vouchers'));
+
+            return view('admin.allcoupons', ['logo' => $logo]);
         }
+
+    public function getCouponWon(){
+        if (isset(Profile::whereUser_id(\Auth::user()->id)->first()->company_logo)){
+            $logo =  Profile::whereUser_id(\Auth::user()->id)->first()->company_logo  ;
+        }else {
+            $logo = 'logo.png';
+        }
+            return view('admin.couponWon', ['logo' => $logo]);
+        }
+
 
 }

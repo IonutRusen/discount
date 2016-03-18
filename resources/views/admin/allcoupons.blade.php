@@ -1,4 +1,4 @@
-{{  json_encode($vouchers) }}
+
 @extends('admin.master')
 @section('title')
     Your Profile
@@ -13,28 +13,20 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <table id="example" class="display" cellspacing="0" width="100%">
+                    <table id="example" class="table table-striped responsive-utilities jambo_table dataTable" aria-describedby="example_info">
                         <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Extn.</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>Description</th>
+                            <th>Complex</th>
+                            <th>Category</th>
+                            <th>Location</th>
+                            <th>Validity</th>
+                            <th>Action</th>
+
                         </tr>
                         </thead>
                         <tbody></tbody>
-                        <tfoot>
-                        <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Extn.</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
-                        </tr>
-                        </tfoot>
+
                     </table>
                 </div>
             </div>
@@ -48,19 +40,24 @@
 
     <script>
         $(document).ready(function() {
-            var data = [$vouchers];
-            for ( var i=0 ; i<50000 ; i++ ) {
-                data.push( [ i, i, i, i, i,i ] );
-            }
-
             $('#example').DataTable( {
-                data:           data,
-                deferRender:    true,
-                scrollY:        200,
-                scrollCollapse: true,
-                scroller:       true
-            } );
-        } );
+                "ajax": {
+                    "url": "ajax/getAllVouchers",
+                    "dataSrc": "",
 
+                },
+
+                "columns": [
+                    { "data": "description" },
+                    { "data": "complex" },
+                    { "data": "category" },
+                    { "data": "name" },
+                    { "data": "validity" },
+                    { "data": "coupon_id" }
+                ]
+            }
+            );
+
+        } );
     </script>
 @endsection

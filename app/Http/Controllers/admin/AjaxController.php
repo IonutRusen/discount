@@ -9,6 +9,7 @@ use App\City;
 use App\Coupon;
 use App\Http\Controllers\Controller;
 use App\Location;
+use Carbon\Carbon;
 use \Illuminate\Http\Request;
 use App\State;
 
@@ -38,8 +39,42 @@ class AjaxController extends Controller
 
     public function getallCoupons(){
 
-        $vouchers = Coupon::where('user_id',\Auth::id())->select('id','value','type','complex','couponcode','category')->get();
+        //$vouchers = Coupon::where('user_id',\Auth::id())->select('description','value','type','complex','validity','category','id')->get();
+        $user = \Auth::id();
+        $vouchers = \DB::table('coupons')
+            ->join('categories', function ($join) use ($user){
 
-        return \Response::json($vouchers);
+                $join->on('categories.id', '=', 'coupons.category')
+                    ->where('coupons.user_id', '=', $user);
+            })->join('locations', 'locations.id', '=', 'coupons.location')
+            ->select(
+                'coupons.description',
+                'coupons.complex',
+                'categories.name as category',
+                'locations.name',
+                'coupons.validity',
+                'coupons.id as coupon_id'
+            )->get();
+
+
+
+        foreach($vouchers as $object) {
+           $object->coupon_id = "<a class='fa fa-times fa-lg text-danger' href=removecoupon/$object->coupon_id></a> <a class='fa fa-eye fa-lg' href=removecoupon/$object->coupon_id></a>";
+
+
+            if ( $object->validity == '0000-00-00 00:00:00'){
+                $object->validity = 'Indefinitely' ;
+            }else {
+                $object->validity = Carbon::parse($object->validity)->format('d-M-Y');
+            }
+
+          if(  $object->complex == 0 ){
+              $object->complex = '<span class="text-danger "><strong>NO</strong></span>';
+
+          }elseif ( $object->complex == 1 )
+              $object->complex = '<span class="text-success"><strong>YES</strong></span>';
+        }
+
+        return $vouchers;
     }
 }

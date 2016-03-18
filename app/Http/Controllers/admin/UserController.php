@@ -74,4 +74,8 @@ class UserController extends Controller
        }
             return redirect()->back()->with('message', 'Login Failed');;
     }
+    public function logout(){
+            Auth::logout();
+        return redirect('admin');
+        }
 }

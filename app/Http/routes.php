@@ -43,6 +43,10 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'admin\UserController@postSignIn',
         'as' => 'signin'
     ]);
+    Route::get('/admin/logout', [
+        'uses' => 'admin\UserController@logout',
+        'as' => 'signin'
+    ]);
     Route::get('/admin/profile', [
         'uses' => 'admin\LinkController@getProfile',
         'as' => 'dashboard',
@@ -171,10 +175,21 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'pdfInvoice',
         'middleware' => 'auth'
     ]);
-
+    Route::get('admin/removecoupon/{id}', [
+        'uses' => 'admin\RemoveVoucher@delete',
+        'as' => 'removeCoupon',
+        'middleware' => 'auth'
+    ]);
     Route::get('admin/ajax/getAllVouchers',[
         'uses' => 'admin\AjaxController@getallCoupons',
         'as' => 'getallCoupons',
+        'middleware' => 'auth'
+    ] );
+
+
+    Route::get('admin/couponWon',[
+        'uses' => 'admin\linkController@getCouponWon',
+        'as' => 'couponWon',
         'middleware' => 'auth'
     ] );
 });
