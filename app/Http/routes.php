@@ -51,16 +51,19 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'admin\LinkController@getProfile',
         'as' => 'profile',
         'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
     Route::post('admin/editProfile', [
         'uses' => 'admin\ProcessFormController@editProfile',
         'as' => 'editProfile',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
     Route::put('admin/addLogo', [
         'uses' => 'admin\ProcessFormController@logo',
         'as' => 'addLogo',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
 
     Route::get('/admin/dashboard', [
@@ -73,12 +76,14 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('admin/subscriptions', [
         'uses' => 'admin\LinkController@getSubscription',
         'as' => 'subscriptions',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
     Route::get('admin/invoice/{type}', [
         'uses' => 'admin\LinkController@getInvoice',
         'as' => 'subscriptions',
         'middleware' => 'auth',
+        'middleware' => 'admin',
 
 
     ]);
@@ -86,111 +91,131 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('admin/addnew', [
         'uses' => 'admin\LinkController@addNew',
         'as' => 'addnew',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
     Route::get('admin/addnewComplex', [
         'uses' => 'admin\LinkController@addNewComplex',
         'as' => 'addnew',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
     Route::get('admin/ajax/state',[
         'uses' => 'admin\AjaxController@getState',
         'as' => 'getstate',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ] );
 
 
     Route::get('admin/ajax/state',[
         'uses' => 'admin\AjaxController@getState',
         'as' => 'getstate',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ] );
 
     Route::get('admin/ajax/city', [
         'uses' => 'admin\AjaxController@getCity',
         'as' => 'getcity',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
     Route::get('admin/ajax/locatinoid', [
         'uses' => 'admin\AjaxController@getLocationbyId',
         'as' => 'getLocationbyId',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
 
     Route::post('admin/savelocation', [
         'uses' => 'admin\ProcessFormController@saveLocation',
         'as' => 'saveLocation',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
     Route::post('admin/editlocation', [
         'uses' => 'admin\ProcessFormController@editLocation',
         'as' => 'editLocation',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
     Route::get('admin/deletelocation/{id}', [
         'uses' => 'admin\ProcessFormController@deleteLocation',
         'as' => 'deleteLocation',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
     Route::post('admin/saveinvoice', [
         'uses' => 'admin\ProcessFormController@postInvoice',
         'as' => 'saveInvoice',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
     Route::post('admin/paypalPayment', [
         'uses' => 'admin\ProcessFormController@postInvoicePaypal',
         'as' => 'saveInvoicePaypal',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
     Route::get('admin/sucessPaypal', [
         'uses' => 'admin\ProcessFormController@successPaypal',
         'as' => 'successPaypal',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
     Route::get('admin/invoices', [
             'uses' => 'admin\LinkController@getInvoices',
         'as' => 'getInvoices',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
 
     Route::get('admin/pdf/{invoiceno}', [
         'uses' => 'admin\PdfInvoice@createInvoice',
         'as' => 'pdfInvoice',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
     //add vouchers
     Route::post('admin/addnewSimpleVoucher', [
         'uses' => 'admin\AddnewSimpleVoucher@addnew',
         'as' => 'pdfInvoice',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
 
     Route::post('admin/addnewComplexVoucher', [
         'uses' => 'admin\AddnewComplexVoucher@addnew',
         'as' => 'pdfInvoice',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
     //end add vouchers
     Route::get('admin/allvouchers', [
         'uses' => 'admin\LinkController@getAllVouchers',
         'as' => 'pdfInvoice',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
     Route::get('admin/removecoupon/{id}', [
         'uses' => 'admin\RemoveVoucher@delete',
         'as' => 'removeCoupon',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
     Route::get('admin/ajax/getAllVouchers',[
         'uses' => 'admin\AjaxController@getallCoupons',
         'as' => 'getallCoupons',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ] );
 
 
     Route::get('admin/couponWon',[
         'uses' => 'admin\linkController@getCouponWon',
         'as' => 'couponWon',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ] );
 });
