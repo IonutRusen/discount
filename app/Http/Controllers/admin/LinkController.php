@@ -5,10 +5,11 @@ namespace App\Http\Controllers\admin;
 use App\AgeFilter;
 use App\Category;
 use App\Country;
-use App\Coupon;
+
 use App\Invoice;
 use App\Location;
 use App\Profile;
+use Barryvdh\DomPDF\Facade as Pdf1;
 
 
 use App\Http\Requests;
@@ -106,6 +107,7 @@ class LinkController extends Controller
 
             })->where(\DB::raw('MONTH(coupons.created_at)'), '<=', \DB::raw('MONTH(profiles.end_cicle)'))
             ->where(\DB::raw('MONTH(coupons.created_at)'), '>=', \DB::raw('MONTH(profiles.updated_at)'))
+            ->where('coupons.complex','=','0')
            ->get());
       //  return $cupoanefolosite;
         $agefilter = AgeFilter::lists('name','id');
@@ -264,12 +266,7 @@ class LinkController extends Controller
         }
 
     public function getCouponWon(){
-        if (isset(Profile::whereUser_id(\Auth::user()->id)->first()->company_logo)){
-            $logo =  Profile::whereUser_id(\Auth::user()->id)->first()->company_logo  ;
-        }else {
-            $logo = 'logo.png';
-        }
-            return view('admin.couponWon', ['logo' => $logo]);
+       return view('admin.couponWon');
         }
 
 

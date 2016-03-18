@@ -49,8 +49,8 @@ Route::group(['middleware' => ['web']], function () {
     ]);
     Route::get('/admin/profile', [
         'uses' => 'admin\LinkController@getProfile',
-        'as' => 'dashboard',
-        'middleware' => 'auth'
+        'as' => 'profile',
+        'middleware' => 'auth',
     ]);
     Route::post('admin/editProfile', [
         'uses' => 'admin\ProcessFormController@editProfile',
@@ -66,7 +66,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/admin/dashboard', [
         'uses' => 'admin\UserController@getDashboard',
         'as' => 'dashboard',
-        'middleware' => 'auth'
+        'middleware' => 'auth',
+        'middleware' => 'admin',
     ]);
 
     Route::get('admin/subscriptions', [

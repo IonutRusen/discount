@@ -59,7 +59,7 @@ class AjaxController extends Controller
 
 
         foreach($vouchers as $object) {
-           $object->coupon_id = "<a class='fa fa-times fa-lg text-danger' href=removecoupon/$object->coupon_id></a> <a class='fa fa-eye fa-lg' href=removecoupon/$object->coupon_id></a>";
+           $object->coupon_id = "<a class='fa fa-times fa-lg text-danger' href=removecoupon/$object->coupon_id></a> ";
 
 
             if ( $object->validity == '0000-00-00 00:00:00'){

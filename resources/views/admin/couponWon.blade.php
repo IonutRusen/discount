@@ -48,30 +48,7 @@
 
 
                 <!-- Table row -->
-                <div class="row">
-                    <div class="col-xs-12 table-responsive" style="min-height:350px;border: none"><br/><br/><br/><br/>
-                        <table class="table table-striped">
 
-                            <tbody>
-
-
-                            <tr style="background-color: transparent;border: none;">
-                                <td>1</td>
-                                <td> <strong>dasdasdasdasasdsad</br>
-                                    <small>sdadasdsadsa<br/> Priority :</small>
-                                </td>
-                                <td>buc</td>
-                                <td>1</td>
-                                <td style="text-align:center;">asdassdaasd</td>
-                                <td>dasdasdas</td>
-                                <td style="text-align: right;">0.00</td>
-                            </tr>
-
-
-                            </tbody>
-                        </table>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
 
 
 
