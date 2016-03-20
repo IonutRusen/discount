@@ -11,6 +11,7 @@ class User extends Model implements Authenticatable
     public function profile(){
         return $this->HasOne('App\Profile');
     }
+    protected $fillable = ['name', 'email', 'facebook_id'];
     public function isAdmin()
     {
         return $this->admin; // this looks for an admin column in your users table

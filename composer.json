@@ -12,7 +12,9 @@
         "cviebrock/image-validator": "^2.0",
         "ignited/laravel-omnipay": "2.*",
         "omnipay/paypal": "~2.0",
-        "barryvdh/laravel-dompdf": "0.6.*"
+        "barryvdh/laravel-dompdf": "0.6.*",
+        "laravel/socialite": "^2.0"
+
 
     },
     "require-dev": {

@@ -219,3 +219,23 @@ Route::group(['middleware' => ['web']], function () {
         'middleware' => 'admin',
     ] );
 });
+//-------------------- FRONT END -----------------------------
+Route::group(['middleware' => ['web']], function () {
+    Route::get('auth/facebook', 'front\AuthController@redirectToProvider');
+    Route::get('auth/facebook/callback', 'front\AuthController@handleProviderCallback');
+
+
+
+    Route::get('/',[
+        'uses' => 'front\urlController@home',
+        'as' => 'acasa',
+
+
+    ] );
+    Route::get('main',[
+        'uses' => 'front\urlController@main',
+        'as' => 'main',
+
+
+    ] );
+});
