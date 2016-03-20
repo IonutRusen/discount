@@ -2,7 +2,7 @@
 @section('title')
     Customer Dashboard
 @endsection
-@include('front.header')
+@include('front.includes.header')
 
 <!-- Preloader -->
 
@@ -291,7 +291,7 @@
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
                         <div class="project-container">
-                            @include('front.profile')
+                            @include('front.profile',$country)
                         </div>
                     </div>
                 </div>
@@ -550,26 +550,58 @@
     </div>
 </div>
 
-@include('front.footer')
+@include('front.includes.footer')
+
+
     <script>
-        $(document).ready(function () {
-            //Get the context of the canvas element we want to select
-            var c = $('#scratch-canvas');
-            var ct = c.get(0).getContext('2d');
-            var ctx = document.getElementById("scratch-canvas").getContext("2d");
-            /*************************************************************************/
+        //AJAX NORMAL
+        $(document).ready(function(){
+            $('#country').change(function(){
 
-//Run function when window resizes
-            $(window).resize(respondCanvas);
+                $.ajax({
+                    url: 'admin/ajax/state',
+                    type: "get",
 
-            function respondCanvas() {
-                c.attr('width', jQuery("#mata").width());
-                c.attr('height', jQuery("#mata").height());
-                //Call a function to redraw other content (texts, images etc)
+                    data: {id: $('#country option:selected').val()},
+                    success: function(data){
 
-            }
+                        var $state = $("#state");
+                        var $city = $("#city");
+                        $state.empty();
 
-            //Initial call
-            respondCanvas();
+                        $city.empty();
+                        $.each(data,function(idx, obj) {
+
+                            $state.append('<option value="' + obj.id +'">' + obj.name + '</option>');
+                        });
+
+                        $state.prepend("<option value='0' selected='selected'>All</option>");
+
+                    }
+                });
+
+            });
         });
+        $(document).ready(function(){
+            $('#state').change(function(){
+
+                $.ajax({
+                    url: 'admin/ajax/city',
+                    type: "get",
+
+                    data: {id: $('#state option:selected').val()},
+                    success: function(data){
+
+                        var $city = $("#city");
+                        $city.empty();
+                        $.each(data,function(idx, obj) {
+
+                            $city.append('<option value="' + obj.id +'">' + obj.name + '</option>');
+                        });
+                        $city.prepend("<option value='0' selected='selected'>Select</option>");
+                    }
+                });
+            });
+        });
+        //AJAX NORMAL
     </script>

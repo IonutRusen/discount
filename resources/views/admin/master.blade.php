@@ -2,6 +2,8 @@
 
 @yield('content')
 
+@yield('menu')
+
 @include('admin.include.footer')
 
 

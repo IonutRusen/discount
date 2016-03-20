@@ -12,7 +12,7 @@
 
     <!-- title and favicon -->
 
-    <title> @yield('title')</title>
+    <title>Boots4 :: Portfolio Template</title>
 
 
 
@@ -31,23 +31,26 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
+    <!--[if IE]>
     <style>
-
-        .canvas {position: absolute;}
-        #mata {
-            height: 300px;
-            position: absolute;
-            z-index: -1;
-            min-width: 600px;
+        .flip-container:hover .back,
+        .flip-container.hover .back {
+            backface-visibility: visible !important;
         }
     </style>
-
+    <![endif]-->
 
 
 </head>
 <style>
 
+    .canvas {position: absolute;}
+    #mata {
+        min-height: 300px;
+        position: absolute;
+        z-index: -1;
+        min-width: 600px;
+    }
 </style>
 
 <body>

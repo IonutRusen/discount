@@ -42,7 +42,7 @@ class AuthController extends Controller
 
         Auth::login($authUser, true);
 
-        return redirect()->route('acasa');
+        return redirect()->route('userDashboard');
     }
 
     /**

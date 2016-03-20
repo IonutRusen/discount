@@ -104,7 +104,7 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'admin\AjaxController@getState',
         'as' => 'getstate',
         'middleware' => 'auth',
-        'middleware' => 'admin',
+
     ] );
 
 
@@ -112,14 +112,14 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'admin\AjaxController@getState',
         'as' => 'getstate',
         'middleware' => 'auth',
-        'middleware' => 'admin',
+
     ] );
 
     Route::get('admin/ajax/city', [
         'uses' => 'admin\AjaxController@getCity',
         'as' => 'getcity',
         'middleware' => 'auth',
-        'middleware' => 'admin',
+
     ]);
     Route::get('admin/ajax/locatinoid', [
         'uses' => 'admin\AjaxController@getLocationbyId',
@@ -227,14 +227,34 @@ Route::group(['middleware' => ['web']], function () {
 
 
     Route::get('/',[
-        'uses' => 'front\urlController@home',
+        'uses' => 'front\urlController@acasa',
         'as' => 'acasa',
 
 
     ] );
-    Route::get('main',[
-        'uses' => 'front\urlController@main',
-        'as' => 'main',
+    Route::get('/dashboard',[
+        'uses' => 'front\urlController@dashboard',
+        'as' => 'userDashboard',
+        'middleware' => 'auth',
+        'middleware' => 'user',
+
+
+    ] );
+    Route::get('/profile',[
+        'uses' => 'front\urlController@profile',
+        'as' => 'ClientProfile',
+        'middleware' => 'auth',
+        'middleware' => 'user',
+
+
+    ] );
+
+    Route::post('editCustomerProfile',[
+        'uses' => 'front\AddCustomerProfile@addProfile',
+        'as' => 'AddCustomerProfile',
+        'middleware' => 'auth',
+        'middleware' => 'user',
+
 
 
     ] );
