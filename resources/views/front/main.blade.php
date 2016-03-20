@@ -551,7 +551,28 @@
 </div>
 
 @include('front.includes.footer')
+    <script>
+        $(document).ready(function () {
+            //Get the context of the canvas element we want to select
+            var c = $('#scratch-canvas');
+            var ct = c.get(0).getContext('2d');
+            var ctx = document.getElementById("scratch-canvas").getContext("2d");
+            /*************************************************************************/
 
+//Run function when window resizes
+            $(window).resize(respondCanvas);
+
+            function respondCanvas() {
+                c.attr('width', jQuery("#mata").width());
+                c.attr('height', jQuery("#mata").height());
+                //Call a function to redraw other content (texts, images etc)
+
+            }
+
+            //Initial call
+            respondCanvas();
+        });
+    </script>
 
     <script>
         //AJAX NORMAL

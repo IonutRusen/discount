@@ -11,7 +11,7 @@
 
 
 <script type="text/javascript" src="frontEnd/assets/js/script.js"></script>
-<script type="text/javascript" src="frontEnd/assets/js/scratchcard.js"></script>
+
 
 
 </body>

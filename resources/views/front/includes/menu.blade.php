@@ -11,13 +11,15 @@
 
     <!-- Single Navigation Menu Button -->
 
-    <div  class=" menu_button">
+    <div  class="menu_button">
         <img alt="" src="frontEnd/assets/img/portfolio.jpg">
         <div class="mask">
         </div>
+
         <div class="heading">
+            <a href="/profile">
             <i class="ion-person hidden-xs"></i>
-            <h2>Pofile</h2>
+            <h2>Pofile</h2></a>
         </div>
     </div>
 

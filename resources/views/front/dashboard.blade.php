@@ -55,6 +55,7 @@
     </div>
 @endsection
 @section('customscript')
+    <script type="text/javascript" src="frontEnd/assets/js/scratchcard.js"></script>
     <script>
         $(document).ready(function () {
             //Get the context of the canvas element we want to select
