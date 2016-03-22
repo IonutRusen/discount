@@ -53,6 +53,6 @@ class AddCustomerProfile extends Controller
 
         $profile->save();
         }
-        return redirect('/profile');
+        return redirect('/dashboard');
     }
 }

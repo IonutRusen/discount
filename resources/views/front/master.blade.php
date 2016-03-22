@@ -1,5 +1,5 @@
 @include('front.includes.header')
-@include('front.details')
+
 @yield('content')
 
 

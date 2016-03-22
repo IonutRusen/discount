@@ -1,3 +1,4 @@
+
 @extends('front.master')
 @section('title')
     Dashboard Discounter
@@ -16,6 +17,7 @@
             </div>
             <div class="main-heading">
                 <h1>Profile</h1>
+
             </div>
         </div>
 
@@ -26,7 +28,7 @@
             <!--( A ) Portfolio -->
 
             <div class="portfolio clearfix full-height">
-                <h2 class="small-heading">Profile</h2>
+                <h2 class="small-heading"><small class="text-center">In order to receive gift cards that you can enjoy, please fill your profile info</small></h2>
 
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">

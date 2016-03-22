@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\front;
 
+use App\ClientProfile;
 use App\Country;
 use Illuminate\Http\Request;
 
@@ -11,9 +12,19 @@ use App\Http\Controllers\Controller;
 class urlController extends Controller
 {
     public function dashboard(){
+        $user_id = \Auth::id();
 
+        //vezi daca are deja profil
+        $check = ClientProfile::where('user_id', '=', $user_id)->first();
+
+        if ($check) {
             return view('front.dashboard')  ;
+        }else{
+            return redirect('/profile');
         }
+        }
+
+
 
     public function acasa(){
         return view('front.home')  ;

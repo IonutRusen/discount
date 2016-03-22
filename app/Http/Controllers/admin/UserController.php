@@ -76,6 +76,7 @@ class UserController extends Controller
     }
     public function logout(){
             Auth::logout();
+            \Session::clear();
         return redirect('admin');
         }
 }

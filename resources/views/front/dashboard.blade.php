@@ -11,7 +11,24 @@
         <div class="introduction">
             <!-- <div class="mask">
             </div> -->
+            <div class="col-sm-12">
+
+                    <div class="dropdown" style="width: 50px;">
+                        <img style="border-radius: 50%" src="https://scontent-vie1-1.xx.fbcdn.net/hprofile-xpa1/v/t1.0-1/p160x160/1517654_990348991051290_7388562664772650216_n.jpg?oh=73a989ab22c9d0e8da04fba9a5c331ce&oe=578E3788" class="dropdown-toggle" type="button" data-toggle="dropdown">
+                        <span class="caret"></span></img>
+                        <ul class="dropdown-menu" style="top: 50px;font-size: 14px;font-weight: 100;text-align:center;padding-top: 10px;">
+
+                            <li >Rusen Ionut</li>
+
+                            <hr>
+                            <li><i class="fa fa-map-marker"></i> Sector 6 Bucuresti</li>
+                            <li><i class="fa fa-power-off"></i> <a href="#">Logout</a></li>
+                        </ul>
+                    </div>
+
+            </div>
             <div class="intro-content col-md-12 hidden-xs">
+
                 <div class="row">
 
                     <div class="col-md-2 col-sm-2 col-sm-12"></div>

@@ -24,16 +24,25 @@
     <div class="introduction">
         <!-- <div class="mask">
         </div> -->
+
         <div class="intro-content col-md-12">
 
-
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+                    <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">HTML</a></li>
+                    <li><a href="#">CSS</a></li>
+                    <li><a href="#">JavaScript</a></li>
+                </ul>
+            </div>
 
         <div class="row">
             <div class="col-md-10 col-md-offset-1" id="scratch-container">
                 <canvas class="canvas img-responsive" id="scratch-canvas"></canvas>
                 <div id="mata" class="col-md-12 col-xs-12 col-sm-12">
                     <h2 >WINNER!!</h2>
-                    <h3>Your code is:</h3>
+                    <h3>Your codsadasde is:</h3>
                     <h1>AbC12dEf</h1>
                 </div>
             </div>

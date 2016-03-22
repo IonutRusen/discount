@@ -45,8 +45,12 @@
 </head>
 <style>
     a:focus, a:hover {
-        color: #fff;
-        text-decoration: none; }
+        color: #000;
+        text-decoration: none;
+    a {
+        color: #000;
+        text-decoration: none;
+    }}
     .canvas {position: absolute;}
     #mata {
         min-height: 300px;

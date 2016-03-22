@@ -1,14 +1,12 @@
+
 <div class="row">
     <div class="col-md-6">
-        <div class="col-md-6">
-            <h6><img class="circle" src="http://api.randomuser.me/portraits/med/women/82.jpg">
-            Jane Wozniak</h6>
-        </div>
-        <div class="col-md-6">
-
-
-
-            <a href="#" class="ellipsis">Sector 6, Bucuresti</a>
+        <div class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+            </ul>
         </div>
 
     </div>
