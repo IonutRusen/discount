@@ -211,6 +211,7 @@ class ProcessFormController extends Controller
             return redirect('admin/dashboard');
 
         }
+
     public function saveLocation(Request $request){
         $this->validate($request, [
             'country'          => 'required',
@@ -238,12 +239,13 @@ class ProcessFormController extends Controller
 
         return redirect('admin/profile');
         }
+
     public function editLocation(Request $request){
-            $locationid = $request['location_id1'];
+            $locationid = $request['location_id'];
             $country = $request['country1'];
-            $locationname = $request['location_name1'];
+            $locationname = $request['location_name'];
             $county = $request['state1'];
-            $city = serialize(Input::get('city'));
+            $city = serialize($request['city1']);
 
             $location = Location::findOrFail($locationid);
 

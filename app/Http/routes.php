@@ -225,7 +225,12 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('auth/facebook/callback', 'front\AuthController@handleProviderCallback');
 
 
+    Route::get('/logout',[
+        'uses' => 'front\urlController@CutomerLogout',
+        'as' => 'customerLogout',
 
+
+    ] );
     Route::get('/',[
         'uses' => 'front\urlController@acasa',
         'as' => 'acasa',
@@ -258,5 +263,13 @@ Route::group(['middleware' => ['web']], function () {
 
 
     ] );
+    Route::get('/servecoupon',[
+        'uses' => 'front\GetAndServeCoupon@getCouponsByCutomerCountry',
+        'as' => 'GetAndServeCoupon',
+        'middleware' => 'auth',
+        'middleware' => 'user',
 
+
+
+    ] );
 });

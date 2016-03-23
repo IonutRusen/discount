@@ -50,6 +50,8 @@ class AddnewComplexVoucher extends Controller
                 'couponcode.*' => 'required',
                 'category' => 'required',
                 'location' => 'required',
+                'genderfilter' => 'in:m,f,all',
+                'agefilter' => 'integer',
                 'description' => 'required|max:150',
 
             ]);
@@ -62,6 +64,7 @@ class AddnewComplexVoucher extends Controller
                 'couponcode.*' => 'required',
                 'category' => 'required',
                 'location' => 'required',
+                'agefilter' => 'integer',
                 'description' => 'required|max:150',
             ]);
         }
