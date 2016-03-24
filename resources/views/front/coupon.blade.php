@@ -1,3 +1,4 @@
+{{ $voucher }}
 <div  id="logo" class="col-sm-3">
     <img style="width: 120px;height: 70px;" src="http://discounter.zmall.ro/img/emag.jpg" /><br/>
     <p style="color:blue">SC ZMALL ONLINE SRL</p>

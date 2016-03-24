@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\front;
 
 use App\ClientProfile;
+use App\Coupon;
 use Request;
 
 use App\Http\Requests;
@@ -44,22 +45,29 @@ class GetAndServeCoupon extends Controller
 
             )->get();
 
-        foreach($data as $object) {
-                $object->City = unserialize($object->City);
+            if(!$data){
+                return view('front.coupon');
+            }else {
+                $safeCoupon = array();
+                foreach ($data as $object) {
+                    $object->City = unserialize($object->City);
+                    array_push($safeCoupon, $object->id);
+                }
 
+                shuffle($safeCoupon);
+                $safe = $safeCoupon[0];
             }
-
-        return GetAndServeCoupon::filterByGender($data,$city,$state,$gender,$age);
+        return GetAndServeCoupon::filterByGender($data,$city,$state,$gender,$age,$safe);
 
 
         }
 
-    public function filterByGender($data,$city,$state,$gender,$age){
+    public function filterByGender($data,$city,$state,$gender,$age,$safe){
         $cupoane = $data;
-
+            $safeCoupon = $safe;
             $city1 = $city;
             $state1 = $state;
-           $gender1 = $gender;
+            $gender1 = $gender;
             $age1 = $age;
 
 
@@ -77,18 +85,22 @@ class GetAndServeCoupon extends Controller
                 unset($cupoane[$key]);
             }
         }
+        if(!$cupoane){
+            return view('front.coupon')->with($safeCoupon);
+        }else {
 
-
-        return GetAndServeCoupon::filterByAge($cupoane,$city1,$state1,$age1);
-
+            return GetAndServeCoupon::filterByAge($cupoane, $city1, $state1, $age1,$safeCoupon);
+        }
     }
 
-    public function filterByAge($cupoane,$city1,$state1,$age1){
-
+    public function filterByAge($cupoane,$city1,$state1,$age1,$safeCoupon){
+        $safe = $safeCoupon;
         $data = $cupoane;
         $city = $city1;
         $state = $state1;
         $age = $age1;
+
+
 
             if ($age >= 18 && $age < 24) {
                 $age = 1;
@@ -111,44 +123,75 @@ class GetAndServeCoupon extends Controller
                 unset($data[$key]);
                 }
             }
-        return GetAndServeCoupon::filterByState($data,$city1,$state1);
+
+        if(!$data){
+            return view('front.coupon')->with($safe);
+        }else {
+            return GetAndServeCoupon::filterByState($data, $city, $state,$safe);
+        }
         }
 
 
-    public function filterByState($data,$city1,$state1){
+    public function filterByState($data,$city,$state,$safe){
+            $safeCoupon = $safe;
             $cupoane = $data;
-            $city = $city1;
-            $state = $state1;
+            $city1 = $city;
+            $state1 = $state;
 
-        $arr=array($state);
+        $arr=array($state1);
         foreach ($cupoane as $key => $obj) {
             if (in_array($obj->StateId, $arr)) {
                 unset($cupoane[$key]);
             }
         }
-
-        return GetAndServeCoupon::filterByCity($cupoane,$city);
+        if(!$cupoane){
+            return view('front.coupon')->with($safeCoupon);
         }
 
-        public function filterByCity($cupoane,$city){
+
+        return GetAndServeCoupon::filterByCity($cupoane,$city1,$safeCoupon);
+        }
+
+        public function filterByCity($cupoane,$city1,$safeCoupon){
+            $safe = $safeCoupon;
             $data = $cupoane;
-            $city1 = $city;
+            $city = $city1;
 
 
-                foreach ($cupoane as $key => $obj) {
+                foreach ($data as $key => $obj) {
 
-                    if (!in_array($city1,$obj->City)) {
+                    if (!in_array($city,$obj->City)) {
                         unset($data[$key]);
                     }
-                   return $obj->id;
+
                 }
             if (!$data){
-                echo  'nu' ;
+                return view('front.coupon')->with($safe);
             }else{
-                echo 'da';
+
+                $winners = array();
+                foreach ($data as $object) {
+
+                    array_push($winners, $object->id);
+                }
+
+                shuffle($winners);
+                $winner = $winners[0];
+
+                return GetAndServeCoupon::DaiVoucher($winner);
             }
         }
 
+
+
+
+    public function DaiVoucher($id){
+            $idVoucher = $id;
+
+        $voucher = Coupon::where('id','=',$idVoucher)->get();
+      //  return $voucher;
+        return view('front.coupon',compact('voucher'));
+        }
 
 }
 
