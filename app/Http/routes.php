@@ -263,7 +263,7 @@ Route::group(['middleware' => ['web']], function () {
 
 
     ] );
-    Route::get('/servecoupon',[
+    Route::post('/servecoupon',[
         'uses' => 'front\GetAndServeCoupon@getCouponsByCutomerCountry',
         'as' => 'GetAndServeCoupon',
         'middleware' => 'auth',

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\front;
 
+use App\Category;
 use App\ClientProfile;
 use App\Country;
 use App\User;
@@ -14,6 +15,7 @@ class urlController extends Controller
 {
     public function dashboard(){
         $user_id = \Auth::id();
+        $categorii = Category::lists('name', 'id');
 
         //vezi daca are deja profil
         $check = ClientProfile::where('user_id', '=', $user_id)->first();
@@ -27,7 +29,7 @@ class urlController extends Controller
 
 
         if ($check) {
-            return view('front.dashboard', compact('data'))  ;
+            return view('front.dashboard', compact('data','categorii'))  ;
         }else{
             return redirect('/profile');
         }

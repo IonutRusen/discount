@@ -65,14 +65,14 @@
                                 <span class="text-danger">{!! $errors->getBag('default')->first('phone') !!}</span>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-                                {!! FORM::text('company_bank_account', null ,
+                                {!! FORM::text('currency', null ,
                                  array(
                                       'class'=>'form-control has-feedback-left',
-                                      'placeholder'=>'Bank Account',
-                                      'id' => 'company_bank_account',
+                                      'placeholder'=>'Currency',
+                                      'id' => 'currency',
                                       )) !!}
-                                <span class="fa fa-bank form-control-feedback left" aria-hidden="true"></span>
-                                <span class="text-danger">{!! $errors->getBag('default')->first('company_bank_account') !!}</span>
+                                <span class="fa fa-eur form-control-feedback left" aria-hidden="true"></span>
+                                <span class="text-danger">{!! $errors->getBag('default')->first('currency') !!}</span>
                             </div>
 
                             <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
@@ -105,6 +105,16 @@
                                       )) !!}
                                 <span class="fa fa-location-arrow form-control-feedback right" aria-hidden="true"></span>
                                 <span class="text-danger">{!! $errors->getBag('default')->first('company_city') !!}</span>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+                                {!! FORM::text('company_bank_account', null ,
+                                 array(
+                                      'class'=>'form-control has-feedback-left',
+                                      'placeholder'=>'Bank Account',
+                                      'id' => 'company_bank_account',
+                                      )) !!}
+                                <span class="fa fa-bank form-control-feedback left" aria-hidden="true"></span>
+                                <span class="text-danger">{!! $errors->getBag('default')->first('company_bank_account') !!}</span>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Address  <span class="required">*</span>

@@ -54,9 +54,9 @@
     .canvas {position: absolute;}
     #mata {
         min-height: 300px;
-        position: absolute;
+
         z-index: -1;
-        min-width: 600px;
+
     }
     .circle {
         border-radius: 50%;

@@ -4,8 +4,25 @@
         <div class="mask">
         </div>
         <div class="heading">
-            <i class="ion-ios-pricetag hidden-xs"></i>
-            <h2>Play & WIN</h2>
+            <i class="ion-ios-pricetag hidden-xs-down hidden-md-down"></i>
+            <h2 class="hidden-xs-down hidden-md-down">Play & WIN</h2>
+            {{ FORM::open(array(
+
+                            'action' => 'front\GetAndServeCoupon@getCouponsByCutomerCountry'
+                        )) }}
+            <div class="form-group col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+                    {{ Form::select('category',$categorii, null,
+                    array(
+                        'class' => 'select2_single form-control',
+                    ))
+                    }}
+
+
+            </div>
+            <div class="form-group col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+                {!! FORM::submit('Choose') !!}
+            </div>
+            {{ FORM::close() }}
         </div>
     </div>
 

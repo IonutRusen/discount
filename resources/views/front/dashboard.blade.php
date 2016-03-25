@@ -51,11 +51,12 @@
 
 
 
-                <div class="row">
+                <div class="row" >
                     <div class="col-md-10 col-md-offset-1" id="scratch-container">
                         <canvas class="canvas img-responsive" id="scratch-canvas"></canvas>
                         <div id="mata" class="col-md-12 col-xs-12 col-sm-12">
-                            @include('front.coupon')
+
+
                         </div>
                     </div>
                 </div>
@@ -70,30 +71,4 @@
 
         @include('front.includes.menu')
     </div>
-@endsection
-@section('customscript')
-    <script type="text/javascript" src="frontEnd/assets/js/scratchcard.js"></script>
-    <script>
-
-            //Get the context of the canvas element we want to select
-
-            var c = $('#scratch-canvas');
-            var ct = c.get(0).getContext('2d');
-            var ctx = document.getElementById("scratch-canvas").getContext("2d");
-            /*************************************************************************/
-
-//Run function when window resizes
-
-
-            function respondCanvas() {
-                c.attr('width', jQuery("#mata").width());
-                c.attr('height', jQuery("#mata").height());
-                //Call a function to redraw other content (texts, images etc)
-
-            }
-
-            //Initial call
-            respondCanvas();
-
-    </script>
 @endsection

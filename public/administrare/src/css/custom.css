@@ -2483,6 +2483,7 @@ legend {
 
 .form-control.has-feedback-left {
     padding-left: 45px;
+    padding-right: 10px;
 }
 
 .form-control.has-feedback-right {

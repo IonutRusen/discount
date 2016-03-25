@@ -4,17 +4,17 @@ namespace App\Http\Controllers\front;
 
 use App\ClientProfile;
 use App\Coupon;
-use Request;
 
-use App\Http\Requests;
+
+use \Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class GetAndServeCoupon extends Controller
 {
 
-    public  function getCouponsByCutomerCountry(){
+    public  function getCouponsByCutomerCountry(Request $request){
 
-        $category = 10;
+        $category = $request['category'];
 
 
         $info = ClientProfile::where('user_id','=',\Auth::id())->first();

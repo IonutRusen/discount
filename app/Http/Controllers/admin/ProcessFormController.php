@@ -29,6 +29,7 @@ class ProcessFormController extends Controller
             'company_state'         => 'required',
             'company_city'          => 'required|min:4',
             'company_address'       => 'required|min:10',
+            'currency'              => 'required|alpha|max:3',
 
         ]);
         $user_id                = $request['user_id'];
@@ -39,6 +40,7 @@ class ProcessFormController extends Controller
         $company_bank_account   = $request['company_bank_account'];
         $company_country        = $request['company_country'];
         $company_state          = $request['company_state'];
+        $currency               = $request['currency'];
         $company_city           = $request['company_city'];
 
         $company_address        = $request['company_address'];
@@ -56,6 +58,7 @@ class ProcessFormController extends Controller
            $profile['company_state'] = $company_state;
            $profile['company_city'] = $company_city;
            $profile['company_address'] = $company_address;
+           $profile['currency'] = $currency;
 
 
            $profile->save();
