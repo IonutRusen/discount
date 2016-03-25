@@ -1,4 +1,7 @@
-
+<?php
+    $object = json_decode($voucher);
+    $data = @unserialize($object->valoare );
+?>
 @extends('front.master')
 @section('title')
     Dashboard Discounter
@@ -33,31 +36,75 @@
                         <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
                             <div class="project-container">
                                 <div class="row">
-
-
-                                    <!-- Portfolio Control Buttons [ END ] -->
-
                                     <div id="projects" class="projet-items clearfix">
+                                        <div class="col-md-8 col-sm-8 col-xs-12 col-sm-offset-2 col-md-offset-2" id="scratch-container" >
+                                         <canvas class="canvas img-responsive" id="scratch-canvas"></canvas>
+                                        <div class="text-center" id="mata" >
+                                            <br/>
+                                            <br/>
 
-                                                    <div class="col-md-8 col-sm-8 col-xs-12 col-sm-offset-2 col-md-offset-2" id="scratch-container" style="border: 1px solid #000">
-
-                                                        <canvas class="canvas img-responsive" id="scratch-canvas"></canvas>
-                                                        <div style="border: 1px solid #000 " id="mata" >
-
-                                                            {{ $voucher }}
-
-                                                        </div>
+                                            {{HTML::image('administrare/src/logos/'.$object->logo )}}<br/> <br/>
 
 
+                                            @if ($data !== false)
+                                                @foreach($data as $value=>$key)
+                                                    @if( $object->type == 1 )
+
+                                                        <h4>
+                                                            {{ "Step $value :" }}
+                                                            {{  $key  }}
+                                                            {{HTML::image('frontEnd/images/percent.png' )}}
+                                                        </h4>
+                                                    @else
+                                                        <h4>
+                                                            {{ "Step $value :"}}
+                                                            {{  $key }}
+                                                            {{  $object->currency  }}</h4>
+                                                    @endif
+
+                                                @endforeach
+                                             @else
+                                                @if( $object->type == 1 )
+                                                    <h2>{{  $object->valoare  }}
+                                                        {{HTML::image('frontEnd/images/percent.png' )}}</h2>
+                                                @else
+                                                    <h2>{{  $object->valoare  }}
+                                                        {{  $object->currency  }}</h2>
+                                                @endif
+                                            @endif
 
 
+                                                <br/>
 
                                         </div>
 
+                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+                            <div class="project-container">
+                                <div class="row">
+                                    <div id="projects" class="projet-items clearfix">
+                                        <div class="col-md-8 col-sm-8 col-xs-12 col-sm-offset-2 col-md-offset-2">
+                                            <div class="col-md-12">
+                                                <div class="pull-left text-center col-md-6" id="social">
+                                                    {{ HTML::image('frontEnd/images/facebookbrag.png') }}
+                                                    {{ HTML::image('frontEnd/images/twittbrag.png') }}
+                                                    {{ HTML::image('frontEnd/images/googlebrag.png') }}
+                                                </div>
+                                                <div class="pull-right text-center col-md-6" id="social">
+                                                    <a href="#" class="btn btn-success">View Voucher</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+
+
                     </div>
 
                 </div>
@@ -69,6 +116,8 @@
 
 @endsection
 @section('customscript')
+
+
     <script type="text/javascript" src="frontEnd/assets/js/scratchcard.js"></script>
     <script>
 

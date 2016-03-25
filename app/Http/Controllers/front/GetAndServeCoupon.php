@@ -31,6 +31,7 @@ class GetAndServeCoupon extends Controller
 
             ->where('locations.country','=',$country)
             ->where('coupons.category','=',$category)
+            ->where('coupons.won_by','=',0)
 
 
             ->select(   'coupons.id',
@@ -188,9 +189,28 @@ class GetAndServeCoupon extends Controller
     public function DaiVoucher($id){
             $idVoucher = $id;
 
-        $voucher = Coupon::where('id','=',$idVoucher)->get();
-      //  return $voucher;
-        return view('front.coupon',compact('voucher'));
+        /*$cupon = Coupon::where('id','=',$idVoucher)->first();
+
+           $cupon['won_by'] = \Auth::id();
+
+        $cupon->update();*/
+
+
+        $voucher = \DB::table('coupons as c')
+            ->join('profiles as p', 'c.user_id', '=', 'p.user_id')
+
+            ->where('c.id','=',$idVoucher)
+            ->select(
+                'c.value as valoare',
+                'c.type',
+                'p.currency as currency',
+                'p.company_logo as logo',
+                'c.id as couponId'
+
+            )->first();
+        $voucher = json_encode($voucher);
+        return view('front.coupon')->with('voucher',$voucher);;
+
         }
 
 }
