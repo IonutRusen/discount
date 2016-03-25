@@ -47,7 +47,8 @@ class GetAndServeCoupon extends Controller
             )->get();
 
             if(!$data){
-                return view('front.coupon');
+
+                return view('front.coupon')->with('voucher',1);
             }else {
                 $safeCoupon = array();
                 foreach ($data as $object) {

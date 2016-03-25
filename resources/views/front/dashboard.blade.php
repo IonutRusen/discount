@@ -33,18 +33,57 @@
 
                 <div class="row">
 
+
+
+
+
                     <div class="col-md-2 col-sm-2 col-sm-12"></div>
-                    <div class="col-lg-12  hidden-sm-down hidden-xs-down ">
+                    <div class="col-lg-12  col-md-12 col-sm-12 ">
+
+
+                        {{ FORM::open(array(
+
+                                'action' => 'front\GetAndServeCoupon@getCouponsByCutomerCountry'
+                            )) }}
+                        <div class="form-group col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+                            <h1>Choose Category</h1>
+                        </div>
+                        <div class="form-group col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
+
+
+
+                            {{ Form::select('category',$categorii, null,
+                            array(
+                                'class' => 'select2_single form-control',
+                            ))
+                            }}
+
+
+                        </div>
+                        <div class="form-group col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 text-center">
+                            {!! FORM::submit('Choose',array(
+                                'class' => 'btn btn-success '
+
+                            )) !!}
+                        </div>
+                        {{ FORM::close() }}
+                    </div>
+
+                    <div class="col-md-2 col-sm-2 col-sm-12"></div>
+                    <div class="col-lg-12  col-md-12 col-sm-12">
                         <div class="social-media">
                             <a href="#" class="fa fa-facebook"  title="Facebook"></a>
                             <a href="#" class="fa fa-twitter"  title="Twitter"></a>
-                            <a href="#" class="fa fa-plus"  title="Google+"></a>
+
                             <a href="#" class="fa fa-linkedin"  title="Linkedin"></a>
                             <a href="#" class="fa fa-behance"  title="Behance"></a>
-                            <a href="#" class="fa fa-flickr"  title="Flicker"></a>
-                            <a href="#" class="fa fa-instagram"  title="Instagram"></a>
+
                         </div>
                     </div>
+
+
+
+
                 </div>
             </div>
             <div class="intro-content col-md-12">
