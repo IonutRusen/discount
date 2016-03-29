@@ -260,9 +260,29 @@ Route::group(['middleware' => ['web']], function () {
         'middleware' => 'auth',
         'middleware' => 'user',
 
+    ] );
+
+    Route::get('winnings',[
+        'uses' => 'front\urlController@viewWinnings',
+        'as' => 'winnings',
+        'middleware' => 'auth',
+        'middleware' => 'user',
+
 
 
     ] );
+
+    Route::get('customerVouchers',[
+        'uses' => 'front\AjaxController@getClientCoupons',
+        'as' => 'clientCoupons',
+        'middleware' => 'auth',
+        'middleware' => 'user',
+
+
+
+    ] );
+
+
     Route::post('/servecoupon',[
         'uses' => 'front\GetAndServeCoupon@getCouponsByCutomerCountry',
         'as' => 'GetAndServeCoupon',
@@ -272,4 +292,11 @@ Route::group(['middleware' => ['web']], function () {
 
 
     ] );
+
+    Route::get('showvoucher/{id}', [
+        'uses' => 'front\GetAndServeCoupon@showCoupon',
+        'as' => 'showCoupon',
+        'middleware' => 'auth',
+        'middleware' => 'user',
+    ]);
 });

@@ -17,7 +17,7 @@
                         <thead>
                         <tr>
                             <th>Description</th>
-                            <th>Complex</th>
+
                             <th>Category</th>
                             <th>Location</th>
                             <th>Validity</th>
@@ -49,7 +49,7 @@
 
                 "columns": [
                     { "data": "description" },
-                    { "data": "complex" },
+
                     { "data": "category" },
                     { "data": "name" },
                     { "data": "validity" },

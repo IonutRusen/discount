@@ -4,9 +4,10 @@
         <div class="mask">
         </div>
         <div class="heading">
+            <a href="/winnings">
             <i class="ion-ios-pricetag hidden-xs-down hidden-md-down"></i>
             <h2 class="hidden-xs-down hidden-md-down">Voucher Arhive</h2>
-
+            </a>
         </div>
     </div>
 
@@ -32,7 +33,7 @@
         </div>
         <div class="heading">
             <i class="ion-ios-lightbulb-outline hidden-xs"></i>
-            <h2>Markey</h2>
+            <h2>Market</h2>
             <h1>SOON</h1>
         </div>
     </div>

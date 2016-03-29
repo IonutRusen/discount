@@ -48,7 +48,7 @@ class GetAndServeCoupon extends Controller
 
             if(!$data){
 
-                return view('front.coupon')->with('voucher',1);
+                  return view('front.coupon')->with('voucher',$data);
             }else {
                 $safeCoupon = array();
                 foreach ($data as $object) {
@@ -190,11 +190,11 @@ class GetAndServeCoupon extends Controller
     public function DaiVoucher($id){
             $idVoucher = $id;
 
-        /*$cupon = Coupon::where('id','=',$idVoucher)->first();
+        $cupon = Coupon::where('id','=',$idVoucher)->first();
 
            $cupon['won_by'] = \Auth::id();
 
-        $cupon->update();*/
+        $cupon->update();
 
 
         $voucher = \DB::table('coupons as c')
@@ -210,7 +210,41 @@ class GetAndServeCoupon extends Controller
 
             )->first();
         $voucher = json_encode($voucher);
-        return view('front.coupon')->with('voucher',$voucher);;
+        return view('front.coupon')->with('voucher',$voucher);
+
+        }
+
+    public function showCoupon($id){
+
+        $voucher = \DB::table('coupons as c')
+            ->join('profiles as p', 'c.user_id', '=', 'p.user_id')
+            ->join('categories as cat', 'c.category', '=', 'cat.id')
+            ->join('locations as l', 'l.id', '=', 'c.location')
+
+            ->where('c.id','=',$id)
+            ->where('c.won_by','=',\Auth::id())
+            ->select(
+                'c.value as valoare',
+                'c.couponcode as cod',
+                'c.type as type',
+                'cat.name as categorie',
+                'l.name as locatie',
+                'c.description as descriere',
+                'c.validity as validitate',
+                'p.company_name as companie',
+                'p.company_logo as logo',
+                'p.currency as currency as valuta'
+
+            )->first();
+
+
+        if (!empty($voucher)){
+            $voucher = json_encode($voucher);
+        return view('front.print')->with('voucher',$voucher);
+
+        }else {
+            return redirect('winnings');
+        }
 
         }
 

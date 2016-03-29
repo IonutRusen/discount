@@ -1,7 +1,11 @@
+
 <?php
-    return $voucher;
-    $object = json_decode($voucher);
-    $data = @unserialize($object->valoare );
+    if (!empty($voucher)){
+        $object = json_decode($voucher);
+        $data = @unserialize($object->valoare );
+    }else {
+        $data = 'unlucky';
+    }
 ?>
 @extends('front.master')
 @section('title')
@@ -39,38 +43,44 @@
                                 <div class="row">
                                     <div id="projects" class="projet-items clearfix">
                                         <div class="col-md-8 col-sm-8 col-xs-12 col-sm-offset-2 col-md-offset-2" id="scratch-container" >
-                                         <canvas class="canvas img-responsive" id="scratch-canvas"></canvas>
+                                         <canvas class="canvas img-responsive"  id="scratch-canvas"></canvas>
                                         <div class="text-center" id="mata" >
-                                            <br/>
-                                            <br/>
 
+                                            @if( $data == 'unlucky' )
+                                                {{HTML::image('frontEnd/images/unlucky.png',null,array(
+                                                    'class' => 'img-responsive',
+                                                ))}}
+                                            @else
+                                                <br/>
+                                                <br/>
                                             {{HTML::image('administrare/src/logos/'.$object->logo )}}<br/> <br/>
 
 
-                                            @if ($data !== false)
-                                                @foreach($data as $value=>$key)
+                                                @if ($data !== false)
+                                                    @foreach($data as $value=>$key)
+                                                        @if( $object->type == 1 )
+
+                                                            <h4>
+                                                                {{ "Step $value :" }}
+                                                                {{  $key  }}
+                                                                {{HTML::image('frontEnd/images/percent.png' )}}
+                                                            </h4>
+                                                        @else
+                                                            <h4>
+                                                                {{ "Step $value :"}}
+                                                                {{  $key }}
+                                                                {{  $object->currency  }}</h4>
+                                                        @endif
+
+                                                    @endforeach
+                                                 @else
                                                     @if( $object->type == 1 )
-
-                                                        <h4>
-                                                            {{ "Step $value :" }}
-                                                            {{  $key  }}
-                                                            {{HTML::image('frontEnd/images/percent.png' )}}
-                                                        </h4>
+                                                        <h2>{{  $object->valoare  }}
+                                                            {{HTML::image('frontEnd/images/percent.png' )}}</h2>
                                                     @else
-                                                        <h4>
-                                                            {{ "Step $value :"}}
-                                                            {{  $key }}
-                                                            {{  $object->currency  }}</h4>
+                                                        <h2>{{  $object->valoare  }}
+                                                            {{  $object->currency  }}</h2>
                                                     @endif
-
-                                                @endforeach
-                                             @else
-                                                @if( $object->type == 1 )
-                                                    <h2>{{  $object->valoare  }}
-                                                        {{HTML::image('frontEnd/images/percent.png' )}}</h2>
-                                                @else
-                                                    <h2>{{  $object->valoare  }}
-                                                        {{  $object->currency  }}</h2>
                                                 @endif
                                             @endif
 

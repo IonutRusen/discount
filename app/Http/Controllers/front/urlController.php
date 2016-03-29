@@ -54,4 +54,10 @@ class urlController extends Controller
             \Session::clear();
         return redirect('/');
         }
+
+
+    public function viewWinnings(){
+            return view('front/winnings');
+        }
+
 }
