@@ -1,8 +1,11 @@
+
 <?php
 
-    $object = json_decode($voucher);
-    $check = @unserialize($object->valoare );
-    $cate = count($check);
+  $object = json_decode($voucher);
+    $valoare = @unserialize($object->valoare );
+    $cod = @unserialize($object->cod );
+
+    $cate = count($valoare);
 
 
 ?>
@@ -21,7 +24,7 @@
 
     <!-- Bootstrap Core CSS --><!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
+    <link type="text/css" rel="stylesheet" href="/frontEnd/assets/css/print.css">
 
 
 </head>
@@ -33,13 +36,31 @@
 
 <!-- Page Content -->
 <div class="container" style="max-width: 1074px">
-    @for($i=1;$i<=3;$i++)
+    @for($i=1;$i<=$cate;$i++)
     <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12" style="min-height: 412px">
+        <div class="col-lg-12 col-xs-12 col-sm-12" style="min-height: 412px" >
             <canvas id="respondCanvas_{{$i}}" class="respondCanvas" style="position: absolute"></canvas>
-            <div class="col-md-2"><h3>
+            <div class="col-xs-6 text-center" >
+                {{HTML::image('administrare/src/logos/'.$object->logo )}}<br/>
+                {{ $object->companie }}<br/>
+                Voucher Code: <br/>
+                {{ $cod[$i] }}<br/>
+                {{ $object->descriere }}<br/>
+            </div>
+            <div class="col-xs-6 etalon text-center" >
+                <span class="value">
 
-                   </h3></div>
+
+                        {{ $valoare[$i] }}
+                @if ( $object->type == 0)
+                    {{ $object->currency }}
+                @elseif( $object->type == 1)
+                        {{HTML::image('frontEnd/images/percent.png' )}}
+                @endif
+
+                   </span>
+            </div>
+
         </div>
     </div>
     <!-- /.row -->
@@ -58,27 +79,29 @@
 <script>
 
     $(document).ready( function(){
+        var count = document.getElementsByClassName('respondCanvas').length;
+
     var imageObj = new Image();
     imageObj.src = "/frontEnd/images/coupons/back1.png";
+        var canvas = new Array();
+        var context = new Array();
+
+        for (var i=1;i<=count;i++) {
+        canvas[i] = document.getElementById("respondCanvas_"+i);
 
 
-    for (var i=1;i<=3;i++) {
-        var canvas1 = document.getElementById("respondCanvas_1");
-        var canvas2 = document.getElementById("respondCanvas_2");
-        var canvas3 = document.getElementById("respondCanvas_3");
+         context[i] = canvas[i].getContext('2d');
 
-        var context2 = canvas2.getContext('2d');
-        var context1 = canvas1.getContext('2d');
-        var context3 = canvas3.getContext('2d');
 
 
     }
-
         imageObj.onload = function () {
-            context1.drawImage(imageObj, 0, 0);
-            context2.drawImage(imageObj, 0, 0);
-            context3.drawImage(imageObj, 0, 0);
+            for (var i=1;i<=count;i++) {
+                context[i].drawImage(imageObj, 0, 0);
+
+            }
         };
+
         //Get the canvas &
          var c = $('.respondCanvas');
 

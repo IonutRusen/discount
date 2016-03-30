@@ -1,0 +1,26 @@
+.etalon{
+    display: block;
+
+
+    margin: 0 auto 1em;
+    height: 412px;
+    border-radius: .2em;
+    position: relative;
+    color: #000;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.value{
+    position: relative;
+    top: 40%;
+    font-size: 50px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+@media print
+{
+
+}
